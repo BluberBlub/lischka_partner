@@ -10,6 +10,7 @@ import {
     inkassoInfo,
     experienceYears,
 } from "../../data/practice-areas";
+import { images } from "../../data/images";
 
 const seo = {
     title: "Rechtsgebiete",
@@ -20,12 +21,13 @@ const seo = {
 
 <BaseLayout title={seo.title} description={seo.description}>
     <!-- Hero -->
-    <Section background="light" padding="lg">
-        <PageHeader
-            title={practiceAreasIntro.title}
-            subtitle={practiceAreasIntro.subtitle}
-        />
+    <PageHeader
+        title={practiceAreasIntro.title}
+        subtitle={practiceAreasIntro.subtitle}
+        backgroundImage={images.pageHeaders.rechtsgebiete}
+    />
 
+    <Section background="light" padding="lg">
         <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
             {
                 practiceAreasIntro.description.map((paragraph) => (

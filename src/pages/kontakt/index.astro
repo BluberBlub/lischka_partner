@@ -5,6 +5,7 @@ import PageHeader from "../../components/astro/PageHeader.astro";
 import LocationCard from "../../components/astro/LocationCard.astro";
 import ContactForm from "../../components/react/ContactForm";
 import { locations } from "../../data/locations";
+import { images } from "../../data/images";
 
 const seo = {
     title: "Kontakt",
@@ -15,12 +16,13 @@ const seo = {
 
 <BaseLayout title={seo.title} description={seo.description}>
     <!-- Hero -->
-    <Section background="light" padding="lg">
-        <PageHeader
-            title="Kontakt"
-            subtitle="Nutzen Sie unser Wissen und unsere Erfahrung. Wir helfen Ihnen, die beste Lösung für Ihr Anliegen zu finden."
-        />
+    <PageHeader
+        title="Kontakt"
+        subtitle="Nutzen Sie unser Wissen und unsere Erfahrung. Wir helfen Ihnen, die beste Lösung für Ihr Anliegen zu finden."
+        backgroundImage={images.pageHeaders.kontakt}
+    />
 
+    <Section background="light" padding="lg">
         <p class="text-lg text-neutral-600 max-w-3xl">
             Wir sind gerne für Sie da und stehen Ihnen für ein Gespräch zur
             Verfügung.

@@ -27,25 +27,11 @@ const history = [
 ---
 
 <BaseLayout title={seo.title} description={seo.description}>
-    <!-- Page Header Image -->
-    <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden">
-        <img
-            src={images.pageHeaders.kanzlei}
-            alt="Kanzlei Lischka & Partner"
-            class="w-full h-full object-cover"
-        />
-        <div
-            class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-        >
-        </div>
-        <div class="absolute bottom-8 left-0 right-0 text-center">
-            <h1
-                class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white"
-            >
-                Die Kanzlei
-            </h1>
-        </div>
-    </div>
+    <!-- Page Header -->
+    <PageHeader
+        title="Die Kanzlei"
+        backgroundImage={images.pageHeaders.kanzlei}
+    />
 
     <!-- Intro Section -->
     <Section background="light" padding="lg">

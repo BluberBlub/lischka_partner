@@ -4,6 +4,7 @@ import Section from "../../components/astro/Section.astro";
 import PageHeader from "../../components/astro/PageHeader.astro";
 import JobPosting from "../../components/astro/JobPosting.astro";
 import { jobPostings, careerIntro } from "../../data/career";
+import { images } from "../../data/images";
 
 const seo = {
     title: "Karriere",
@@ -14,9 +15,13 @@ const seo = {
 
 <BaseLayout title={seo.title} description={seo.description}>
     <!-- Hero -->
-    <Section background="light" padding="lg">
-        <PageHeader title={careerIntro.title} subtitle={careerIntro.subtitle} />
+    <PageHeader
+        title={careerIntro.title}
+        subtitle={careerIntro.subtitle}
+        backgroundImage={images.pageHeaders.karriere}
+    />
 
+    <Section background="light" padding="lg">
         <p class="text-lg text-neutral-600 max-w-3xl">
             {careerIntro.description}
         </p>
