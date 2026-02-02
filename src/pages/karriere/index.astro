@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/astro/Section.astro";
+import PageHeader from "../../components/astro/PageHeader.astro";
+import JobPosting from "../../components/astro/JobPosting.astro";
+import { jobPostings, careerIntro } from "../../data/career";
+
+const seo = {
+    title: "Karriere",
+    description:
+        "Werden Sie Teil unseres Teams. Wir bieten engagierten Mitarbeiterinnen und Mitarbeitern ein professionelles und kollegiales Arbeitsumfeld.",
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <!-- Hero -->
+    <Section background="light" padding="lg">
+        <PageHeader title={careerIntro.title} subtitle={careerIntro.subtitle} />
+
+        <p class="text-lg text-neutral-600 max-w-3xl">
+            {careerIntro.description}
+        </p>
+    </Section>
+
+    <!-- Job Postings -->
+    <Section padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900] mb-8"
+        >
+            Stellenausschreibung
+        </h2>
+        <div class="space-y-8">
+            {jobPostings.map((job) => <JobPosting job={job} />)}
+        </div>
+    </Section>
+</BaseLayout>

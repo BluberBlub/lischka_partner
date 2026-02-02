@@ -1,0 +1,136 @@
+---
+import { footerNavigation, legalNavigation } from "../../data/navigation";
+import { locations } from "../../data/locations";
+import { images } from "../../data/images";
+---
+
+<footer style="background-color: #001a33; color: #ffffff;">
+    <div class="container section">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <!-- Brand -->
+            <div class="lg:col-span-1">
+                <a href="/" class="inline-block mb-4">
+                    <img
+                        src={images.logoWhite}
+                        alt="Lischka & Partner"
+                        class="h-12 w-auto"
+                    />
+                </a>
+                <p class="text-neutral-300 text-sm">
+                    Rechtsanwälte | Fachanwälte<br />
+                    Ravensburg | Bad Waldsee
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+                <nav aria-label="Footer Navigation">
+                    <ul class="space-y-2">
+                        {
+                            footerNavigation.map((item) => (
+                                <li>
+                                    <a
+                                        href={item.href}
+                                        class="text-neutral-300 hover:text-white transition-colors text-sm"
+                                    >
+                                        {item.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Locations -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Standorte</h3>
+                <div class="space-y-4">
+                    {
+                        locations.map((location) => (
+                            <div class="text-sm text-neutral-300">
+                                <p class="font-medium text-white">
+                                    {location.name}
+                                </p>
+                                <p>{location.address.street}</p>
+                                <p>
+                                    {location.address.postalCode}{" "}
+                                    {location.address.city}
+                                </p>
+                                <p class="mt-1">
+                                    <a
+                                        href={`tel:${location.phone.replace(/\s/g, "")}`}
+                                        class="hover:text-white transition-colors"
+                                    >
+                                        Tel: {location.phone}
+                                    </a>
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+                <div class="space-y-2 text-sm text-neutral-300">
+                    <p>
+                        <a
+                            href="mailto:ravensburg@lischka-partner.de"
+                            class="hover:text-white transition-colors"
+                        >
+                            ravensburg@lischka-partner.de
+                        </a>
+                    </p>
+                    <p>
+                        <a
+                            href="tel:+4975136353"
+                            class="hover:text-white transition-colors"
+                        >
+                            0751 36353-0
+                        </a>
+                    </p>
+                </div>
+                <div class="mt-6">
+                    <a
+                        href="/kontakt/"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors"
+                        style="background-color: #c8b291; color: #001a33;"
+                    >
+                        Kontaktieren Sie uns
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-12 pt-8 border-t border-neutral-700">
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+                <p class="text-neutral-400 text-sm">
+                    © {new Date().getFullYear()} Lischka & Partner GbR. Alle Rechte
+                    vorbehalten.
+                </p>
+                <nav aria-label="Rechtliche Links">
+                    <ul class="flex flex-wrap items-center gap-4 md:gap-6">
+                        {
+                            legalNavigation.map((item) => (
+                                <li>
+                                    <a
+                                        href={item.href}
+                                        class="text-neutral-400 hover:text-white transition-colors text-sm"
+                                    >
+                                        {item.label}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>

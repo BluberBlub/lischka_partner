@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/astro/Section.astro";
+import PageHeader from "../../components/astro/PageHeader.astro";
+import TeamGrid from "../../components/astro/TeamGrid.astro";
+import CTASection from "../../components/astro/CTASection.astro";
+import { lawyers, assistants } from "../../data/team";
+
+const seo = {
+    title: "Team",
+    description:
+        "Unsere Rechtsanwältinnen und Rechtsanwälte sind Spezialisten auf ihrem Gebiet. Alle unsere Anwälte haben eine erfolgreich abgeschlossene Ausbildung auf mehreren Fachanwaltsgebieten.",
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <!-- Hero -->
+    <Section background="light" padding="lg">
+        <PageHeader
+            title="Team"
+            subtitle="Unsere Rechtsanwältinnen und Rechtsanwälte – Spezialisten auf ihrem Gebiet – und weit darüber hinaus."
+        />
+
+        <div class="prose prose-lg max-w-none text-neutral-600 mb-12">
+            <p>
+                Alle unsere Anwälte haben eine erfolgreich abgeschlossene
+                Ausbildung auf mehreren Fachanwaltsgebieten. Sie sind aber auch
+                darüber hinaus auf weiteren Gebieten schwerpunktmäßig tätig und
+                verfügen über eine langjährige außergerichtliche und
+                gerichtliche Erfahrung.
+            </p>
+            <p>
+                Unsere Anwälte bilden sich ständig fort und garantieren Ihnen
+                damit einen stets aktuellen Wissensstand auf hohem Niveau. Sie
+                halten aber auch regelmäßig eigene Vorträge in unseren
+                Kanzleiräumen für interessierte Zuhörer und organisieren
+                Fortbildungen für andere Anwälte.
+            </p>
+        </div>
+
+        <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-[--color-accent-100] text-[--color-accent-800] rounded-full text-sm font-medium mb-8"
+        >
+            <span>40 Jahre Erfahrung und Kompetenz</span>
+        </div>
+    </Section>
+
+    <!-- Lawyers Section -->
+    <Section padding="lg">
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-6">
+                <h2
+                    class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900]"
+                >
+                    Anwälte
+                </h2>
+            </div>
+            <div class="flex flex-wrap gap-3 text-sm text-neutral-600 mb-8">
+                <span class="px-3 py-1 bg-neutral-100 rounded-full">Wissen</span
+                >
+                <span class="px-3 py-1 bg-neutral-100 rounded-full">Können</span
+                >
+                <span class="px-3 py-1 bg-neutral-100 rounded-full"
+                    >Kompetenz</span
+                >
+            </div>
+        </div>
+        <TeamGrid members={lawyers} columns={3} />
+    </Section>
+
+    <!-- Assistants Section -->
+    <Section padding="lg" background="light">
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-6">
+                <h2
+                    class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900]"
+                >
+                    Anwaltsassistentinnen
+                </h2>
+            </div>
+            <div class="flex flex-wrap gap-3 text-sm text-neutral-600 mb-4">
+                <span class="px-3 py-1 bg-white rounded-full">Freundlich</span>
+                <span class="px-3 py-1 bg-white rounded-full">Kompetent</span>
+                <span class="px-3 py-1 bg-white rounded-full"
+                    >Professionell</span
+                >
+            </div>
+            <p class="text-neutral-600 max-w-2xl">
+                Unsere Mandanten schätzen die Freundlichkeit, Zuverlässigkeit
+                und professionelle Kompetenz unserer Anwaltsassistentinnen
+                ebenso, wie die angenehme Kanzleiatmosphäre.
+            </p>
+        </div>
+        <TeamGrid members={assistants} showDetails={false} columns={4} />
+    </Section>
+
+    <!-- CTA -->
+    <CTASection />
+</BaseLayout>

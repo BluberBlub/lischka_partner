@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/astro/Hero.astro";
+import CTASection from "../components/astro/CTASection.astro";
+import ImageSlider from "../components/astro/ImageSlider.astro";
+import { images } from "../data/images";
+
+const seo = {
+	title: "Home",
+	description:
+		"Rechtsanwälte | Fachanwälte Lischka & Partner Ravensburg | Bad Waldsee. Wir bieten Ihnen maßgeschneiderte Lösungen für Ihre rechtlichen Angelegenheiten und vertreten engagiert Ihre Interessen.",
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+	<!-- Hero Section -->
+	<Hero />
+
+	<!-- Content Section with Logo -->
+	<section class="py-16 md:py-24 bg-white">
+		<div class="container text-center">
+			<h2
+				class="text-2xl md:text-3xl font-serif font-bold mb-4"
+				style="color: #003466;"
+			>
+				Rechtsanwälte | Fachanwälte<br />
+				Lischka & Partner
+			</h2>
+
+			<!-- Logo Image -->
+			<div class="my-8">
+				<img
+					src={images.logoSquare}
+					alt="Lischka & Partner Logo"
+					class="mx-auto max-w-[300px] h-auto"
+					loading="lazy"
+				/>
+			</div>
+
+			<h3
+				class="text-xl md:text-2xl font-bold mb-8"
+				style="color: #003466;"
+			>
+				Ravensburg | Bad Waldsee
+			</h3>
+
+			<!-- Keywords -->
+			<div
+				class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8 text-lg"
+			>
+				<span class="flex items-center gap-2" style="color: #003466;">
+					<span style="color: #c8b291;">•</span>
+					<strong>Durchsetzen</strong>
+				</span>
+				<span class="flex items-center gap-2" style="color: #003466;">
+					<span style="color: #c8b291;">•</span>
+					<strong>Abwehren</strong>
+				</span>
+				<span class="flex items-center gap-2" style="color: #003466;">
+					<span style="color: #c8b291;">•</span>
+					<strong>Verhandeln</strong>
+				</span>
+				<span class="flex items-center gap-2" style="color: #003466;">
+					<span style="color: #c8b291;">•</span>
+					<strong>Gestalten</strong>
+				</span>
+			</div>
+
+			<hr class="w-1/2 mx-auto border-neutral-300 mb-8" />
+
+			<p class="text-lg text-neutral-700 max-w-3xl mx-auto mb-4">
+				Wir bieten Ihnen maßgeschneiderte Lösungen für Ihre rechtlichen
+				Angelegenheiten und vertreten engagiert Ihre Interessen.
+			</p>
+			<p class="text-lg text-neutral-700 max-w-3xl mx-auto mb-4">
+				Nutzen Sie unser Wissen und unsere Erfahrung. Wir helfen Ihnen,
+				die beste Lösung für Ihr Anliegen zu finden.<br />
+				Wir sind gerne für Sie da und stehen Ihnen für ein Gespräch zur Verfügung.
+			</p>
+			<p class="text-lg text-neutral-700 max-w-3xl mx-auto">
+				Kontaktieren Sie uns jetzt und lassen Sie uns gemeinsam Ihre
+				Ziele erreichen.
+			</p>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<CTASection
+		title="Kontaktieren Sie uns jetzt und lassen Sie uns gemeinsam Ihre rechtlichen Angelegenheiten lösen."
+	/>
+</BaseLayout>

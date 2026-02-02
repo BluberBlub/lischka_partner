@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/astro/Section.astro";
+import PageHeader from "../../components/astro/PageHeader.astro";
+import LocationCard from "../../components/astro/LocationCard.astro";
+import CTASection from "../../components/astro/CTASection.astro";
+import { locations } from "../../data/locations";
+import { images } from "../../data/images";
+
+const seo = {
+    title: "Kanzlei",
+    description:
+        "Tageslichtdurchflutete Kanzleiräume in schönster Lage über den Dächern von Ravensburg sowie im Schlosshof Bad Waldsee. Seit 1983 kompetent für Sie da.",
+};
+
+const history = [
+    {
+        year: 1983,
+        text: "wurde unsere Kanzlei in Ravensburg begründet und im Zuge der Wiedervereinigung",
+    },
+    { year: 1990, text: "um unsere Kanzlei in Pirna (Sachsen) erweitert." },
+    {
+        year: 1999,
+        text: "haben wir im Bad Waldsee eine weitere Kanzlei eröffnet.",
+    },
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <!-- Page Header Image -->
+    <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden">
+        <img
+            src={images.pageHeaders.kanzlei}
+            alt="Kanzlei Lischka & Partner"
+            class="w-full h-full object-cover"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+        >
+        </div>
+        <div class="absolute bottom-8 left-0 right-0 text-center">
+            <h1
+                class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white"
+            >
+                Die Kanzlei
+            </h1>
+        </div>
+    </div>
+
+    <!-- Intro Section -->
+    <Section background="light" padding="lg">
+        <div class="prose prose-lg max-w-none text-neutral-600">
+            <p>
+                Tageslichtdurchflutete Kanzleiräume in schönster Lage über den
+                Dächern von Ravensburg sowie im Schlosshof Bad Waldsee und ein
+                stets freundlicher Umgangston fördern den Teamgeist.
+            </p>
+            <p>
+                Fachliche Qualifikation und persönliches Engagement unserer
+                Anwälte führten zu einer kontinuierlichen Expansion unserer
+                Tätigkeit.
+            </p>
+        </div>
+    </Section>
+
+    <!-- History Timeline -->
+    <Section padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-8"
+            style="color: #003466;"
+        >
+            Unsere Geschichte
+        </h2>
+        <div class="space-y-6 max-w-2xl">
+            {
+                history.map((item) => (
+                    <div class="flex gap-6 items-start">
+                        <div
+                            class="flex-shrink-0 w-16 h-16 rounded-lg flex items-center justify-center font-bold text-lg"
+                            style="background-color: #003466; color: #ffffff;"
+                        >
+                            {item.year}
+                        </div>
+                        <p class="text-neutral-700 pt-3">{item.text}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </Section>
+
+    <!-- Bad Waldsee Info -->
+    <Section background="light" padding="lg">
+        <div class="max-w-3xl">
+            <p class="text-lg text-neutral-700">
+                Unsere Mandanten in Bad Waldsee schätzen besonders, dass
+                Fachanwälte vor Ort zur Verfügung stehen und sie nicht nach
+                Ravensburg, Biberach oder Ulm fahren müssen.
+            </p>
+        </div>
+    </Section>
+
+    <!-- Technology -->
+    <Section padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-6"
+            style="color: #003466;"
+        >
+            Moderne Infrastruktur
+        </h2>
+        <div class="prose prose-lg max-w-none text-neutral-600">
+            <p>
+                Unsere Kanzleien sind mit modernsten Kommunikationssystemen
+                ausgestattet und miteinander verbunden. Über Videokonferenz ist
+                jeder Anwalt bei Bedarf jederzeit für alle Mandanten erreichbar.
+            </p>
+            <p>
+                Internetpräsenz, Videokonferenz, Schreiben mit Spracherkennung,
+                KI sowie Zugriff auf externe Rechtsdatenbanken mit über 1,5
+                Millionen Urteilen gehören bei uns zum Standard.
+            </p>
+        </div>
+    </Section>
+
+    <!-- Locations -->
+    <Section background="light" padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-8 text-center"
+            style="color: #003466;"
+        >
+            Unsere Standorte
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {locations.map((location) => <LocationCard location={location} />)}
+        </div>
+    </Section>
+
+    <!-- CTA -->
+    <CTASection />
+</BaseLayout>

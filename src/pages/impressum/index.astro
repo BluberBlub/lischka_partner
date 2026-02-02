@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/astro/Section.astro";
+import PageHeader from "../../components/astro/PageHeader.astro";
+import { companyInfo, locations } from "../../data/locations";
+import { lawyers } from "../../data/team";
+
+const seo = {
+    title: "Impressum",
+    description:
+        "Impressum und Anbieterkennzeichnung der Anwaltskanzlei Lischka & Partner GbR in Ravensburg.",
+};
+
+const lawyerNames = lawyers.map((l) => l.name);
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <Section padding="lg">
+        <PageHeader title="Impressum" />
+
+        <div class="prose prose-lg max-w-none">
+            <h2>Anbieterkennzeichnung nach § 5 Telemediengesetz (TMG)</h2>
+
+            <p>
+                <strong>{companyInfo.name}</strong><br />
+                {companyInfo.type}<br />
+                USt-IdNr.: {companyInfo.ustIdNr}
+            </p>
+
+            <hr />
+
+            <p>
+                {companyInfo.primaryLocation.address.street}<br />
+                {companyInfo.primaryLocation.address.postalCode}
+                {companyInfo.primaryLocation.address.city}<br />
+                <a href={`mailto:${companyInfo.primaryLocation.email}`}
+                    >{companyInfo.primaryLocation.email}</a
+                ><br />
+                Tel: {companyInfo.primaryLocation.phone} Fax: {
+                    companyInfo.primaryLocation.fax
+                }
+            </p>
+
+            <h3>Rechtsanwälte</h3>
+            <p>
+                {lawyerNames.join(", ")}
+            </p>
+            <p>
+                sind Mitglieder der {companyInfo.chamberMembership} und als Rechtsanwälte
+                in Deutschland zugelassen.
+            </p>
+
+            <h3>Berufsrechtliche Regelungen</h3>
+            <p>
+                Für die Berufsausübung der Rechtsanwälte gelten nachfolgende
+                rechtliche Regelungen:
+            </p>
+            <ul>
+                <li>die Bundesrechtsanwaltsordnung,</li>
+                <li>das Rechtsanwaltsvergütungsgesetz,</li>
+                <li>die Berufsordnung der Rechtsanwälte,</li>
+                <li>die Fachanwaltsordnung</li>
+                <li>
+                    die Berufsregeln der Rechtsanwälte der Europäischen Union
+                    (CCBE),
+                </li>
+            </ul>
+            <p>
+                Die Vorschriften sind u.a. im Internet auf der Homepage der
+                Bundesrechtsanwaltskammer zu finden:<br />
+                <a
+                    href="http://www.brak.de/fuer-anwaelte/berufsrecht/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    http://www.brak.de
+                </a>
+            </p>
+
+            <h3>Berufshaftpflichtversicherung</h3>
+            <p>
+                {companyInfo.insurance.provider}, {
+                    companyInfo.insurance.address
+                }<br />
+                Räumlicher Geltungsbereich: {companyInfo.insurance.coverage}
+            </p>
+
+            <h3>Inhaltlich verantwortlich</h3>
+            <p>
+                Verantwortlich im Sinne des Mediendienste-Staatsvertrages:<br />
+                {companyInfo.responsiblePerson}
+            </p>
+        </div>
+    </Section>
+</BaseLayout>

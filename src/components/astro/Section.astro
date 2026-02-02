@@ -1,0 +1,44 @@
+---
+interface Props {
+    as?: "section" | "div" | "article";
+    class?: string;
+    id?: string;
+    padding?: "none" | "sm" | "md" | "lg";
+    background?: "white" | "light" | "dark" | "primary";
+}
+
+const {
+    as: Element = "section",
+    class: className = "",
+    id,
+    padding = "lg",
+    background = "white",
+} = Astro.props;
+
+const paddingClasses = {
+    none: "",
+    sm: "py-8 md:py-12",
+    md: "py-12 md:py-16",
+    lg: "py-16 md:py-24",
+};
+
+const backgroundClasses = {
+    white: "bg-white",
+    light: "bg-neutral-50",
+    dark: "bg-[--color-primary-950] text-white",
+    primary: "bg-[--color-primary-900] text-white",
+};
+---
+
+<Element
+    id={id}
+    class:list={[
+        paddingClasses[padding],
+        backgroundClasses[background],
+        className,
+    ]}
+>
+    <div class="container">
+        <slot />
+    </div>
+</Element>

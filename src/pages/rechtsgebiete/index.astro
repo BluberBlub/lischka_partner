@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/astro/Section.astro";
+import PageHeader from "../../components/astro/PageHeader.astro";
+import PracticeAreasGrid from "../../components/astro/PracticeAreasGrid.astro";
+import CTASection from "../../components/astro/CTASection.astro";
+import {
+    practiceAreas,
+    practiceAreasIntro,
+    inkassoInfo,
+    experienceYears,
+} from "../../data/practice-areas";
+
+const seo = {
+    title: "Rechtsgebiete",
+    description:
+        "Wir haben uns auf bestimmte Gebiete spezialisiert und vertreten deshalb zwar nicht sämtliche Rechtsgebiete – aber alle für Sie wesentlichen. Über 40 Jahre Erfahrung.",
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <!-- Hero -->
+    <Section background="light" padding="lg">
+        <PageHeader
+            title={practiceAreasIntro.title}
+            subtitle={practiceAreasIntro.subtitle}
+        />
+
+        <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
+            {
+                practiceAreasIntro.description.map((paragraph) => (
+                    <p>{paragraph}</p>
+                ))
+            }
+        </div>
+
+        <div
+            class="mt-8 inline-flex items-center gap-2 px-4 py-2 bg-[--color-accent-100] text-[--color-accent-800] rounded-full text-sm font-medium"
+        >
+            <span>Über {experienceYears} Jahre Erfahrung und Kompetenz</span>
+        </div>
+    </Section>
+
+    <!-- Practice Areas Grid -->
+    <Section padding="lg">
+        <PracticeAreasGrid areas={practiceAreas} />
+    </Section>
+
+    <!-- Inkasso Section -->
+    <Section background="light" padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900] mb-6"
+        >
+            {inkassoInfo.title}
+        </h2>
+        <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
+            {inkassoInfo.description.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+    </Section>
+
+    <!-- CTA -->
+    <CTASection />
+</BaseLayout>

@@ -1,0 +1,53 @@
+---
+import type { TeamMember } from "../../types";
+import TeamMemberCard from "./TeamMemberCard.astro";
+
+interface Props {
+    members: TeamMember[];
+    title?: string;
+    subtitle?: string;
+    showDetails?: boolean;
+    columns?: 2 | 3 | 4;
+}
+
+const {
+    members,
+    title,
+    subtitle,
+    showDetails = true,
+    columns = 3,
+} = Astro.props;
+
+const columnClasses = {
+    2: "md:grid-cols-2",
+    3: "md:grid-cols-2 lg:grid-cols-3",
+    4: "md:grid-cols-2 lg:grid-cols-4",
+};
+---
+
+<div>
+    {
+        (title || subtitle) && (
+            <div class="text-center mb-12">
+                {title && (
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-[--color-primary-900] mb-4">
+                        {title}
+                    </h2>
+                )}
+                {subtitle && (
+                    <p class="text-lg text-neutral-600 max-w-2xl mx-auto">
+                        {subtitle}
+                    </p>
+                )}
+            </div>
+        )
+    }
+
+    <div class={`grid grid-cols-1 ${columnClasses[columns]} gap-6 md:gap-8`}>
+        {
+            members.map((member) => (
+                <TeamMemberCard member={member} showDetails={showDetails} />
+            ))
+        }
+    </div>
+</div>

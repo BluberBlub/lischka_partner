@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Section from "../../../components/astro/Section.astro";
+import PageHeader from "../../../components/astro/PageHeader.astro";
+import CTASection from "../../../components/astro/CTASection.astro";
+
+const seo = {
+    title: "Infoveranstaltungen und Fortbildungen",
+    description:
+        "In unseren Kanzleiräumen finden regelmäßig Vorträge zu aktuellen Rechtsthemen für interessierte Bürger sowie Fortbildungen für externe Anwälte statt.",
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <!-- Hero -->
+    <Section background="light" padding="lg">
+        <PageHeader
+            title="Infoveranstaltungen"
+            subtitle="In unseren Kanzleiräumen finden regelmäßig Vorträge zu aktuellen Rechtsthemen für interessierte Bürger sowie Fortbildungen für externe Anwälte statt."
+        />
+    </Section>
+
+    <!-- CTA -->
+    <CTASection
+        title="Lassen Sie sich jetzt durch einen unserer Experten beraten."
+    />
+</BaseLayout>

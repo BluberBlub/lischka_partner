@@ -1,0 +1,55 @@
+---
+import type { Location } from "../../types";
+import { MapPin, Phone, Mail } from "lucide-react";
+
+interface Props {
+    location: Location;
+}
+
+const { location } = Astro.props;
+---
+
+<article
+    class="bg-white rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow border border-neutral-100"
+>
+    <div class="flex items-start gap-4">
+        <div
+            class="flex-shrink-0 w-12 h-12 bg-[--color-primary-50] rounded-lg flex items-center justify-center"
+        >
+            <MapPin className="w-6 h-6 text-[--color-primary-600]" />
+        </div>
+        <div class="flex-1">
+            <h3
+                class="text-xl font-serif font-bold text-[--color-primary-900] mb-3"
+            >
+                {location.name}
+            </h3>
+
+            <address class="not-italic text-neutral-600 space-y-1 mb-4">
+                <p>{location.address.street}</p>
+                <p>{location.address.postalCode} {location.address.city}</p>
+            </address>
+
+            <div class="space-y-2">
+                <a
+                    href={`tel:${location.phone.replace(/\s/g, "")}`}
+                    class="flex items-center gap-2 text-neutral-700 hover:text-[--color-primary-900] transition-colors"
+                >
+                    <Phone className="w-4 h-4" />
+                    <span>Tel: {location.phone}</span>
+                </a>
+                <p class="flex items-center gap-2 text-neutral-500 text-sm">
+                    <span class="w-4"></span>
+                    <span>Fax: {location.fax}</span>
+                </p>
+                <a
+                    href={`mailto:${location.email}`}
+                    class="flex items-center gap-2 text-neutral-700 hover:text-[--color-primary-900] transition-colors"
+                >
+                    <Mail className="w-4 h-4" />
+                    <span>{location.email}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,43 @@
+---
+import type { PracticeArea } from "../../types";
+
+interface Props {
+    areas: PracticeArea[];
+    title?: string;
+    subtitle?: string;
+}
+
+const { areas, title, subtitle } = Astro.props;
+---
+
+<div>
+    {
+        (title || subtitle) && (
+            <div class="text-center mb-12">
+                {title && (
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-[--color-primary-900] mb-4">
+                        {title}
+                    </h2>
+                )}
+                {subtitle && (
+                    <p class="text-lg text-neutral-600 max-w-3xl mx-auto">
+                        {subtitle}
+                    </p>
+                )}
+            </div>
+        )
+    }
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+            areas.map((area) => (
+                <div class="flex items-center gap-3 p-4 bg-white rounded-lg border border-neutral-200 hover:border-[--color-primary-300] hover:shadow-sm transition-all group">
+                    <span class="flex-shrink-0 w-2 h-2 rounded-full bg-[--color-accent-500] group-hover:scale-125 transition-transform" />
+                    <span class="text-neutral-700 group-hover:text-[--color-primary-900] transition-colors">
+                        {area.name}
+                    </span>
+                </div>
+            ))
+        }
+    </div>
+</div>
