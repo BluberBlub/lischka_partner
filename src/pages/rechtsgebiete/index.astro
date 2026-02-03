@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Section from "../../components/astro/Section.astro";
 import PageHeader from "../../components/astro/PageHeader.astro";
-import PracticeAreasGrid from "../../components/astro/PracticeAreasGrid.astro";
+import PracticeAreaSearch from "../../components/react/PracticeAreaSearch";
 import CTASection from "../../components/astro/CTASection.astro";
 import {
     practiceAreas,
@@ -27,7 +27,14 @@ const seo = {
         backgroundImage={images.pageHeaders.rechtsgebiete}
     />
 
+    <!-- Intro Section -->
     <Section background="light" padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-6"
+            style="color: #003466;"
+        >
+            Unsere Schwerpunkte
+        </h2>
         <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
             {
                 practiceAreasIntro.description.map((paragraph) => (
@@ -43,15 +50,22 @@ const seo = {
         </div>
     </Section>
 
-    <!-- Practice Areas Grid -->
+    <!-- Practice Areas Search -->
     <Section padding="lg">
-        <PracticeAreasGrid areas={practiceAreas} />
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-8"
+            style="color: #003466;"
+        >
+            Alle Rechtsgebiete
+        </h2>
+        <PracticeAreaSearch areas={practiceAreas} client:load />
     </Section>
 
     <!-- Inkasso Section -->
     <Section background="light" padding="lg">
         <h2
-            class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900] mb-6"
+            class="text-2xl md:text-3xl font-serif font-bold mb-6"
+            style="color: #003466;"
         >
             {inkassoInfo.title}
         </h2>
@@ -61,5 +75,7 @@ const seo = {
     </Section>
 
     <!-- CTA -->
-    <CTASection />
+    <CTASection
+        title="Benötigen Sie rechtlichen Beistand? Kontaktieren Sie uns."
+    />
 </BaseLayout>

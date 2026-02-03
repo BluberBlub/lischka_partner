@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Section from "../../../components/astro/Section.astro";
+import PageHeader from "../../../components/astro/PageHeader.astro";
+import CTASection from "../../../components/astro/CTASection.astro";
+import { images } from "../../../data/images";
+
+const seo = {
+    title: "Polnisch / Obsługa Prawna - Lischka & Partner",
+    description:
+        "Porady i reprezentacje prawne w języku polskim i niemieckim. Beratung und Rechtsvertretung in polnischer und deutscher Sprache.",
+};
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+    <PageHeader
+        title="Polnisch / Obsługa Prawna"
+        subtitle="Porady i reprezentacje prawne w języku polskim i niemieckim"
+        backgroundImage={images.pageHeaders.polnisch}
+    />
+
+    <Section padding="lg">
+        <div
+            class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-neutral-100"
+        >
+            <div class="prose prose-lg max-w-none text-neutral-700">
+                <h2 class="text-[--color-primary-900]">
+                    Porady i reprezentacje prawne w języku polskim i niemieckim.
+                </h2>
+                <h3 class="text-[--color-accent-700]">
+                    Beratung und Rechtsvertretung in polnischer und deutscher
+                    Sprache.
+                </h3>
+
+                <p class="font-bold mt-8">Rechtsanwalt Christoph Lischka.</p>
+
+                <p class="mt-8 text-lg">
+                    Lassen Sie sich jetzt durch einen unserer Experten beraten.
+                </p>
+            </div>
+        </div>
+    </Section>
+
+    <CTASection title="Skontaktuj się z nami / Kontaktieren Sie uns" />
+</BaseLayout>

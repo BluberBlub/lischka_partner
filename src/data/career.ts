@@ -30,6 +30,6 @@ export const jobPostings: JobPosting[] = [
 
 export const careerIntro = {
     title: 'Karriere',
-    subtitle: 'Werden Sie Teil unseres Teams.',
-    description: 'Wir bieten engagierten Mitarbeiterinnen und Mitarbeitern ein professionelles und kollegiales Arbeitsumfeld. Fachliche Qualität, kontinuierliche Weiterbildung und ein respektvolles Miteinander prägen unsere tägliche Arbeit. Lernen Sie unsere Kanzlei als Arbeitgeber kennen und entdecken Sie Ihre beruflichen Perspektiven bei uns.',
+    subtitle: 'Werden Sie Teil unseres Teams',
+    description: 'Wir bieten engagierten Mitarbeiterinnen und Mitarbeitern ein professionelles und kollegiales Arbeitsumfeld. Fachliche Qualität, kontinuierliche Weiterbildung und ein respektvolles Miteinander prägen unsere tägliche Arbeit.',
 };

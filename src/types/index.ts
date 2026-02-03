@@ -37,6 +37,7 @@ export interface Location {
     phone: string;
     fax: string;
     email: string;
+    mapEmbedUrl?: string;
 }
 
 // Navigation Types

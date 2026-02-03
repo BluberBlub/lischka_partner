@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Section from "../../components/astro/Section.astro";
 import PageHeader from "../../components/astro/PageHeader.astro";
 import { companyInfo, locations } from "../../data/locations";
+import { images } from "../../data/images";
 import { lawyers } from "../../data/team";
 
 const seo = {
@@ -15,81 +16,141 @@ const lawyerNames = lawyers.map((l) => l.name);
 ---
 
 <BaseLayout title={seo.title} description={seo.description}>
+    <PageHeader
+        title="Impressum"
+        backgroundImage={images.pageHeaders.kanzlei}
+    />
+
     <Section padding="lg">
-        <PageHeader title="Impressum" />
+        <div
+            class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-neutral-100"
+        >
+            <div
+                class="prose prose-lg max-w-none text-neutral-700 prose-headings:font-serif"
+            >
+                <h2 class="text-2xl font-bold text-[--color-primary-900] mb-6">
+                    Anbieterkennzeichnung nach § 5 Telemediengesetz (TMG)
+                </h2>
 
-        <div class="prose prose-lg max-w-none">
-            <h2>Anbieterkennzeichnung nach § 5 Telemediengesetz (TMG)</h2>
+                <div class="mb-8">
+                    <p class="mb-2">
+                        <strong>{companyInfo.name}</strong><br />
+                        {companyInfo.type}<br />
+                        USt-IdNr.: {companyInfo.ustIdNr}
+                    </p>
+                </div>
 
-            <p>
-                <strong>{companyInfo.name}</strong><br />
-                {companyInfo.type}<br />
-                USt-IdNr.: {companyInfo.ustIdNr}
-            </p>
+                <hr class="border-neutral-200 my-8" />
 
-            <hr />
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div>
+                        <h3
+                            class="text-xl font-bold text-[--color-primary-800] mb-4"
+                        >
+                            Hauptstandort
+                        </h3>
+                        <p class="leading-relaxed">
+                            {companyInfo.primaryLocation.address.street}<br />
+                            {companyInfo.primaryLocation.address.postalCode}
+                            {companyInfo.primaryLocation.address.city}<br />
+                            <a
+                                href={`mailto:${companyInfo.primaryLocation.email}`}
+                                class="text-[--color-primary-600] hover:underline font-medium"
+                            >
+                                {companyInfo.primaryLocation.email}
+                            </a><br />
+                            Tel: <a
+                                href={`tel:+49${companyInfo.primaryLocation.phone.replace(/^0/, "").replace(/[\s-]/g, "")}`}
+                                class="text-[--color-primary-600] hover:underline font-medium"
+                                >{companyInfo.primaryLocation.phone}</a
+                            ><br />
+                            Fax: <a
+                                href={`tel:+49${companyInfo.primaryLocation.fax.replace(/^0/, "").replace(/[\s-]/g, "")}`}
+                                class="text-[--color-primary-600] hover:underline font-medium"
+                                >{companyInfo.primaryLocation.fax}</a
+                            >
+                        </p>
+                    </div>
 
-            <p>
-                {companyInfo.primaryLocation.address.street}<br />
-                {companyInfo.primaryLocation.address.postalCode}
-                {companyInfo.primaryLocation.address.city}<br />
-                <a href={`mailto:${companyInfo.primaryLocation.email}`}
-                    >{companyInfo.primaryLocation.email}</a
-                ><br />
-                Tel: {companyInfo.primaryLocation.phone} Fax: {
-                    companyInfo.primaryLocation.fax
-                }
-            </p>
+                    <div>
+                        <h3
+                            class="text-xl font-bold text-[--color-primary-800] mb-4"
+                        >
+                            Inhaltlich verantwortlich
+                        </h3>
+                        <p class="leading-relaxed">
+                            Verantwortlich im Sinne des
+                            Mediendienste-Staatsvertrages:<br />
+                            {companyInfo.responsiblePerson}
+                        </p>
+                    </div>
+                </div>
 
-            <h3>Rechtsanwälte</h3>
-            <p>
-                {lawyerNames.join(", ")}
-            </p>
-            <p>
-                sind Mitglieder der {companyInfo.chamberMembership} und als Rechtsanwälte
-                in Deutschland zugelassen.
-            </p>
+                <div class="mb-12">
+                    <h3
+                        class="text-xl font-bold text-[--color-primary-800] mb-4"
+                    >
+                        Rechtsanwälte
+                    </h3>
+                    <p class="mb-4">
+                        {lawyerNames.join(", ")}
+                    </p>
+                    <p>
+                        sind Mitglieder der {companyInfo.chamberMembership} und als
+                        Rechtsanwälte in Deutschland zugelassen.
+                    </p>
+                </div>
 
-            <h3>Berufsrechtliche Regelungen</h3>
-            <p>
-                Für die Berufsausübung der Rechtsanwälte gelten nachfolgende
-                rechtliche Regelungen:
-            </p>
-            <ul>
-                <li>die Bundesrechtsanwaltsordnung,</li>
-                <li>das Rechtsanwaltsvergütungsgesetz,</li>
-                <li>die Berufsordnung der Rechtsanwälte,</li>
-                <li>die Fachanwaltsordnung</li>
-                <li>
-                    die Berufsregeln der Rechtsanwälte der Europäischen Union
-                    (CCBE),
-                </li>
-            </ul>
-            <p>
-                Die Vorschriften sind u.a. im Internet auf der Homepage der
-                Bundesrechtsanwaltskammer zu finden:<br />
-                <a
-                    href="http://www.brak.de/fuer-anwaelte/berufsrecht/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    http://www.brak.de
-                </a>
-            </p>
+                <div class="mb-12">
+                    <h3
+                        class="text-xl font-bold text-[--color-primary-800] mb-4"
+                    >
+                        Berufsrechtliche Regelungen
+                    </h3>
+                    <p class="mb-4">
+                        Für die Berufsausübung der Rechtsanwälte gelten
+                        nachfolgende rechtliche Regelungen:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                        <li>die Bundesrechtsanwaltsordnung,</li>
+                        <li>das Rechtsanwaltsvergütungsgesetz,</li>
+                        <li>die Berufsordnung der Rechtsanwälte,</li>
+                        <li>die Fachanwaltsordnung</li>
+                        <li>
+                            die Berufsregeln der Rechtsanwälte der Europäischen
+                            Union (CCBE),
+                        </li>
+                    </ul>
+                    <p>
+                        Die Vorschriften sind u.a. im Internet auf der Homepage
+                        der Bundesrechtsanwaltskammer zu finden:<br />
+                        <a
+                            href="http://www.brak.de/fuer-anwaelte/berufsrecht/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-[--color-primary-600] hover:underline font-medium"
+                        >
+                            http://www.brak.de
+                        </a>
+                    </p>
+                </div>
 
-            <h3>Berufshaftpflichtversicherung</h3>
-            <p>
-                {companyInfo.insurance.provider}, {
-                    companyInfo.insurance.address
-                }<br />
-                Räumlicher Geltungsbereich: {companyInfo.insurance.coverage}
-            </p>
-
-            <h3>Inhaltlich verantwortlich</h3>
-            <p>
-                Verantwortlich im Sinne des Mediendienste-Staatsvertrages:<br />
-                {companyInfo.responsiblePerson}
-            </p>
+                <div class="mb-8">
+                    <h3
+                        class="text-xl font-bold text-[--color-primary-800] mb-4"
+                    >
+                        Berufshaftpflichtversicherung
+                    </h3>
+                    <p>
+                        {companyInfo.insurance.provider}, {
+                            companyInfo.insurance.address
+                        }<br />
+                        Räumlicher Geltungsbereich: {
+                            companyInfo.insurance.coverage
+                        }
+                    </p>
+                </div>
+            </div>
         </div>
     </Section>
 </BaseLayout>

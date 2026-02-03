@@ -12,6 +12,7 @@ export const locations: Location[] = [
         phone: '0751 36353-0',
         fax: '0751 36353-29',
         email: 'ravensburg@lischka-partner.de',
+        mapEmbedUrl: 'https://maps.google.com/maps?q=Pfannenstiel+16,+88214+Ravensburg&t=&z=15&ie=UTF8&iwloc=&output=embed',
     },
     {
         id: 'bad-waldsee',
@@ -24,6 +25,7 @@ export const locations: Location[] = [
         phone: '07524 9753-0',
         fax: '07524 9753-29',
         email: 'waldsee@lischka-partner.de',
+        mapEmbedUrl: 'https://maps.google.com/maps?q=Schlosshof+1,+88339+Bad+Waldsee&t=&z=15&ie=UTF8&iwloc=&output=embed',
     },
 ];
 

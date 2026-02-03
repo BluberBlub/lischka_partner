@@ -143,8 +143,8 @@ export default function MobileNav({ navigation, currentPath }: Props) {
                                                 href={item.href}
                                                 onClick={() => setIsOpen(false)}
                                                 className={`block px-6 py-3 font-medium transition-colors ${isActive(item.href)
-                                                        ? 'text-[--color-primary-900] bg-[--color-primary-50]'
-                                                        : 'text-neutral-700 hover:bg-neutral-50'
+                                                    ? 'text-[--color-primary-900] bg-[--color-primary-50]'
+                                                    : 'text-neutral-700 hover:bg-neutral-50'
                                                     }`}
                                                 aria-current={isActive(item.href) ? 'page' : undefined}
                                             >
@@ -153,6 +153,20 @@ export default function MobileNav({ navigation, currentPath }: Props) {
                                         )}
                                     </li>
                                 ))}
+                                <li key="polnisch">
+                                    <a
+                                        href="/service/polnisch/"
+                                        onClick={() => setIsOpen(false)}
+                                        className="flex items-center gap-3 px-6 py-3 font-medium text-neutral-700 hover:bg-neutral-50 transition-colors"
+                                        aria-label="Polnische Version"
+                                    >
+                                        <svg viewBox="0 0 16 10" className="h-5 w-8 rounded-sm shadow-sm border border-neutral-200">
+                                            <path fill="#fff" d="M0 0h16v5H0z" />
+                                            <path fill="#dc143c" d="M0 5h16v5H0z" />
+                                        </svg>
+                                        <span>Polnisch / Polski</span>
+                                    </a>
+                                </li>
                             </ul>
 
                             {/* Contact CTA */}

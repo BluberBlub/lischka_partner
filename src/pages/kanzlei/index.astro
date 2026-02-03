@@ -21,7 +21,7 @@ const history = [
     { year: 1990, text: "um unsere Kanzlei in Pirna (Sachsen) erweitert." },
     {
         year: 1999,
-        text: "haben wir im Bad Waldsee eine weitere Kanzlei eröffnet.",
+        text: "haben wir in Bad Waldsee eine weitere Kanzlei eröffnet.",
     },
 ];
 ---
@@ -30,12 +30,19 @@ const history = [
     <!-- Page Header -->
     <PageHeader
         title="Die Kanzlei"
+        subtitle="Tageslichtdurchflutete Kanzleiräume in schönster Lage über den Dächern von Ravensburg sowie im Schlosshof Bad Waldsee."
         backgroundImage={images.pageHeaders.kanzlei}
     />
 
     <!-- Intro Section -->
     <Section background="light" padding="lg">
-        <div class="prose prose-lg max-w-none text-neutral-600">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-6"
+            style="color: #003466;"
+        >
+            Über unsere Kanzlei
+        </h2>
+        <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
             <p>
                 Tageslichtdurchflutete Kanzleiräume in schönster Lage über den
                 Dächern von Ravensburg sowie im Schlosshof Bad Waldsee und ein
@@ -49,40 +56,45 @@ const history = [
         </div>
     </Section>
 
-    <!-- History Timeline -->
+    <!-- History Timeline (horizontal) -->
     <Section padding="lg">
         <h2
-            class="text-2xl md:text-3xl font-serif font-bold mb-8"
+            class="text-2xl md:text-3xl font-serif font-bold mb-12 text-center"
             style="color: #003466;"
         >
             Unsere Geschichte
         </h2>
-        <div class="space-y-6 max-w-2xl">
-            {
-                history.map((item) => (
-                    <div class="flex gap-6 items-start">
-                        <div
-                            class="flex-shrink-0 w-16 h-16 rounded-lg flex items-center justify-center font-bold text-lg"
-                            style="background-color: #003466; color: #ffffff;"
-                        >
-                            {item.year}
+        <div class="relative">
+            <!-- Connector Line (Desktop) -->
+            <div
+                class="hidden md:block absolute top-10 left-[15%] right-[15%] h-1 bg-[--color-primary-900]"
+            >
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
+                {
+                    history.map((item) => (
+                        <div class="relative flex flex-col items-center text-center">
+                            <div class="flex-shrink-0 w-20 h-20 rounded-full flex items-center justify-center font-bold text-xl shadow-lg border-4 border-white bg-[--color-primary-900] text-white z-10">
+                                {item.year}
+                            </div>
+                            <p class="mt-4 text-neutral-700 max-w-[200px]">
+                                {item.text}
+                            </p>
                         </div>
-                        <p class="text-neutral-700 pt-3">{item.text}</p>
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
         </div>
     </Section>
 
     <!-- Bad Waldsee Info -->
     <Section background="light" padding="lg">
-        <div class="max-w-3xl">
-            <p class="text-lg text-neutral-700">
-                Unsere Mandanten in Bad Waldsee schätzen besonders, dass
-                Fachanwälte vor Ort zur Verfügung stehen und sie nicht nach
-                Ravensburg, Biberach oder Ulm fahren müssen.
-            </p>
-        </div>
+        <p class="text-lg text-neutral-700 max-w-3xl">
+            Unsere Mandanten in Bad Waldsee schätzen besonders, dass Fachanwälte
+            vor Ort zur Verfügung stehen und sie nicht nach Ravensburg, Biberach
+            oder Ulm fahren müssen.
+        </p>
     </Section>
 
     <!-- Technology -->
@@ -93,7 +105,7 @@ const history = [
         >
             Moderne Infrastruktur
         </h2>
-        <div class="prose prose-lg max-w-none text-neutral-600">
+        <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
             <p>
                 Unsere Kanzleien sind mit modernsten Kommunikationssystemen
                 ausgestattet und miteinander verbunden. Über Videokonferenz ist
@@ -121,5 +133,5 @@ const history = [
     </Section>
 
     <!-- CTA -->
-    <CTASection />
+    <CTASection title="Lernen Sie uns persönlich kennen." />
 </BaseLayout>

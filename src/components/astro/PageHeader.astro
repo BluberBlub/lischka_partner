@@ -7,19 +7,26 @@ interface Props {
 }
 
 const { title, subtitle, centered = false, backgroundImage } = Astro.props;
+import { Image } from "astro:assets";
 ---
 
 {
     backgroundImage ? (
         <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden mb-12">
-            <img
+            <Image
                 src={backgroundImage}
                 alt={title}
+                width={1920}
+                height={1080}
                 class="w-full h-full object-cover"
+                loading="eager"
             />
             <div class="absolute inset-0 bg-black/50" />
             <div class="absolute inset-0 flex flex-col items-center justify-end pb-8 md:pb-12 text-center container mx-auto px-4">
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-4 relative z-10">
+                <h1
+                    class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 relative z-10"
+                    style="color: #ffffff;"
+                >
                     {title}
                 </h1>
                 {subtitle && (

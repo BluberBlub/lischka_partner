@@ -16,14 +16,20 @@ const seo = {
 
 <BaseLayout title={seo.title} description={seo.description}>
     <PageHeader
-        title="Team"
+        title="Unser Team"
         subtitle="Unsere Rechtsanwältinnen und Rechtsanwälte – Spezialisten auf ihrem Gebiet – und weit darüber hinaus."
         backgroundImage={images.pageHeaders.team}
     />
 
     <!-- Intro -->
     <Section background="light" padding="lg">
-        <div class="prose prose-lg max-w-none text-neutral-600 mb-12">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-6"
+            style="color: #003466;"
+        >
+            Kompetenz und Erfahrung
+        </h2>
+        <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
             <p>
                 Alle unsere Anwälte haben eine erfolgreich abgeschlossene
                 Ausbildung auf mehreren Fachanwaltsgebieten. Sie sind aber auch
@@ -41,58 +47,36 @@ const seo = {
         </div>
 
         <div
-            class="inline-flex items-center gap-2 px-4 py-2 bg-[--color-accent-100] text-[--color-accent-800] rounded-full text-sm font-medium mb-8"
+            class="mt-8 inline-flex items-center gap-2 px-4 py-2 bg-[--color-accent-100] text-[--color-accent-800] rounded-full text-sm font-medium"
         >
-            <span>40 Jahre Erfahrung und Kompetenz</span>
+            <span>Über 40 Jahre Erfahrung und Kompetenz</span>
         </div>
     </Section>
 
     <!-- Lawyers Section -->
     <Section padding="lg">
-        <div class="mb-8">
-            <div class="flex items-center gap-4 mb-6">
-                <h2
-                    class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900]"
-                >
-                    Anwälte
-                </h2>
-            </div>
-            <div class="flex flex-wrap gap-3 text-sm text-neutral-600 mb-8">
-                <span class="px-3 py-1 bg-neutral-100 rounded-full">Wissen</span
-                >
-                <span class="px-3 py-1 bg-neutral-100 rounded-full">Können</span
-                >
-                <span class="px-3 py-1 bg-neutral-100 rounded-full"
-                    >Kompetenz</span
-                >
-            </div>
-        </div>
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-8"
+            style="color: #003466;"
+        >
+            Unsere Anwälte
+        </h2>
         <TeamGrid members={lawyers} columns={3} />
     </Section>
 
     <!-- Assistants Section -->
     <Section padding="lg" background="light">
-        <div class="mb-8">
-            <div class="flex items-center gap-4 mb-6">
-                <h2
-                    class="text-2xl md:text-3xl font-serif font-bold text-[--color-primary-900]"
-                >
-                    Anwaltsassistentinnen
-                </h2>
-            </div>
-            <div class="flex flex-wrap gap-3 text-sm text-neutral-600 mb-4">
-                <span class="px-3 py-1 bg-white rounded-full">Freundlich</span>
-                <span class="px-3 py-1 bg-white rounded-full">Kompetent</span>
-                <span class="px-3 py-1 bg-white rounded-full"
-                    >Professionell</span
-                >
-            </div>
-            <p class="text-neutral-600 max-w-2xl">
-                Unsere Mandanten schätzen die Freundlichkeit, Zuverlässigkeit
-                und professionelle Kompetenz unserer Anwaltsassistentinnen
-                ebenso, wie die angenehme Kanzleiatmosphäre.
-            </p>
-        </div>
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-6"
+            style="color: #003466;"
+        >
+            Anwaltsassistentinnen
+        </h2>
+        <p class="text-neutral-600 max-w-3xl mb-8">
+            Unsere Mandanten schätzen die Freundlichkeit, Zuverlässigkeit und
+            professionelle Kompetenz unserer Anwaltsassistentinnen ebenso, wie
+            die angenehme Kanzleiatmosphäre.
+        </p>
         <TeamGrid members={assistants} showDetails={false} columns={4} />
     </Section>
 

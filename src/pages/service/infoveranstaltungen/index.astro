@@ -3,21 +3,269 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Section from "../../../components/astro/Section.astro";
 import PageHeader from "../../../components/astro/PageHeader.astro";
 import CTASection from "../../../components/astro/CTASection.astro";
+import { images } from "../../../data/images";
 
 const seo = {
     title: "Infoveranstaltungen und Fortbildungen",
     description:
         "In unseren Kanzleiräumen finden regelmäßig Vorträge zu aktuellen Rechtsthemen für interessierte Bürger sowie Fortbildungen für externe Anwälte statt.",
 };
+
+const upcomingEvents = [
+    {
+        title: "Aktuelles zum Mietrecht",
+        date: "Nach Ankündigung",
+        time: "18:00 Uhr",
+        location: "Kanzlei Ravensburg",
+        description:
+            "Informationsveranstaltung zu den neuesten Entwicklungen im Mietrecht für Vermieter und Mieter.",
+        speaker: "RA Helmut Hornstein",
+    },
+    {
+        title: "Erbrecht für Einsteiger",
+        date: "Nach Ankündigung",
+        time: "18:00 Uhr",
+        location: "Kanzlei Ravensburg",
+        description:
+            "Grundlagen der Nachlassplanung: Testament, Pflichtteil und Erbschaftssteuer verständlich erklärt.",
+        speaker: "RA Tobias Betzel",
+    },
+    {
+        title: "Baurecht aktuell",
+        date: "Nach Ankündigung",
+        time: "18:00 Uhr",
+        location: "Kanzlei Ravensburg",
+        description:
+            "Wichtige Hinweise für Bauherren und Handwerker zu Vertragsgestaltung und Mängelrechten.",
+        speaker: "RA Christoph Lischka",
+    },
+];
+
+const pastTopics = [
+    "Verkehrsunfall – Was nun?",
+    "Scheidung und ihre Folgen",
+    "Das neue Wohnungseigentumsrecht",
+    "Unternehmernachfolge richtig planen",
+    "Patientenverfügung und Vorsorgevollmacht",
+    "Aktuelles zum Arbeitsrecht",
+];
 ---
 
 <BaseLayout title={seo.title} description={seo.description}>
     <!-- Hero -->
+    <PageHeader
+        title="Infoveranstaltungen"
+        subtitle="Wissen teilen – Kompetenz vermitteln"
+        backgroundImage={images.pageHeaders.kanzlei}
+    />
+
+    <!-- Intro -->
     <Section background="light" padding="lg">
-        <PageHeader
-            title="Infoveranstaltungen"
-            subtitle="In unseren Kanzleiräumen finden regelmäßig Vorträge zu aktuellen Rechtsthemen für interessierte Bürger sowie Fortbildungen für externe Anwälte statt."
-        />
+        <div class="">
+            <h2
+                class="text-2xl md:text-3xl font-serif font-bold mb-6"
+                style="color: #003466;"
+            >
+                Vorträge und Fortbildungen
+            </h2>
+            <div class="prose prose-lg max-w-none text-neutral-600 space-y-4">
+                <p>
+                    In unseren Kanzleiräumen finden regelmäßig Vorträge zu
+                    aktuellen Rechtsthemen für interessierte Bürgerinnen und
+                    Bürger sowie Fortbildungen für externe Anwälte statt.
+                </p>
+                <p>
+                    Unsere Anwälte teilen ihr Fachwissen und ihre praktische
+                    Erfahrung in verständlicher Form. Die Veranstaltungen sind
+                    kostenfrei und bieten Gelegenheit, rechtliche Fragen in
+                    entspannter Atmosphäre zu besprechen.
+                </p>
+            </div>
+        </div>
+    </Section>
+
+    <!-- Upcoming Events -->
+    <Section padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-8"
+            style="color: #003466;"
+        >
+            Geplante Veranstaltungen
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+                upcomingEvents.map((event) => (
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-neutral-100 hover:shadow-lg transition-shadow">
+                        <div class="flex items-center gap-2 text-sm text-[--color-accent-600] font-medium mb-3">
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
+                            </svg>
+                            <span>{event.date}</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-[--color-primary-900] mb-2">
+                            {event.title}
+                        </h3>
+                        <p class="text-neutral-600 text-sm mb-4">
+                            {event.description}
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-neutral-500">
+                            <span class="flex items-center gap-1">
+                                <svg
+                                    class="w-3.5 h-3.5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                    />
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
+                                </svg>
+                                {event.location}
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <svg
+                                    class="w-3.5 h-3.5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                    />
+                                </svg>
+                                {event.speaker}
+                            </span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <p class="mt-8 text-neutral-500 text-sm text-center">
+            Konkrete Termine werden rechtzeitig auf dieser Seite und in der
+            lokalen Presse angekündigt.
+        </p>
+    </Section>
+
+    <!-- For Lawyers -->
+    <Section background="light" padding="lg">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2
+                class="text-2xl md:text-3xl font-serif font-bold mb-6"
+                style="color: #003466;"
+            >
+                Fortbildungen für Anwälte
+            </h2>
+            <p class="text-lg text-neutral-600 mb-8">
+                Wir organisieren regelmäßig Fortbildungsveranstaltungen für
+                Kolleginnen und Kollegen aus der Region. Unsere Anwälte sind als
+                Dozenten bei verschiedenen Institutionen tätig, unter anderem
+                bei der Industrie- und Handelskammer Bodensee-Oberschwaben und
+                der Handwerkskammer Ulm.
+            </p>
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 bg-[--color-accent-100] text-[--color-accent-800] rounded-full text-sm font-medium"
+            >
+                <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    ></path>
+                </svg>
+                <span>Anerkannte Fortbildungspunkte nach § 15 FAO</span>
+            </div>
+        </div>
+    </Section>
+
+    <!-- Past Topics -->
+    <Section padding="lg">
+        <h2
+            class="text-2xl md:text-3xl font-serif font-bold mb-8"
+            style="color: #003466;"
+        >
+            Bisherige Themen
+        </h2>
+        <p class="text-neutral-600 mb-6">
+            Zu folgenden Themen haben wir in der Vergangenheit bereits
+            Veranstaltungen durchgeführt:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {
+                pastTopics.map((topic) => (
+                    <div class="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border border-neutral-100">
+                        <span
+                            class="flex-shrink-0 w-2 h-2 rounded-full"
+                            style="background-color: #c8b291;"
+                        />
+                        <span class="text-neutral-700">{topic}</span>
+                    </div>
+                ))
+            }
+        </div>
+    </Section>
+
+    <!-- Contact -->
+    <Section background="light" padding="lg">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2
+                class="text-2xl md:text-3xl font-serif font-bold mb-6"
+                style="color: #003466;"
+            >
+                Interesse an einer Veranstaltung?
+            </h2>
+            <p class="text-neutral-600 mb-6">
+                Gerne informieren wir Sie über kommende Veranstaltungen.
+                Kontaktieren Sie uns oder schauen Sie regelmäßig auf dieser
+                Seite vorbei.
+            </p>
+            <a
+                href="/kontakt/"
+                class="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all hover:translate-y-[-2px] hover:shadow-lg"
+                style="background-color: #c8b291; color: #001a33;"
+            >
+                Kontakt aufnehmen
+                <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
     </Section>
 
     <!-- CTA -->

@@ -25,6 +25,7 @@ export const images = {
         karriere: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
         rechtsgebiete: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
         kontakt: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
+        polnisch: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
     },
 
     // Team Photos - Lawyers (full resolution)

@@ -2,7 +2,9 @@
 import { mainNavigation } from "../../data/navigation";
 import { images } from "../../data/images";
 import MobileNav from "../react/MobileNav";
+import GlobalSearch from "../react/GlobalSearch";
 import { Phone } from "lucide-react";
+import { Image } from "astro:assets";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -16,6 +18,7 @@ const currentPath = Astro.url.pathname;
                     src={images.logo}
                     alt="Lischka & Partner - Rechtsanwälte"
                     class="h-10 md:h-12 w-auto"
+                    loading="eager"
                 />
             </a>
 
@@ -110,10 +113,25 @@ const currentPath = Astro.url.pathname;
                         </div>
                     ))
                 }
+                <!-- Polish Flag -->
+                <a
+                    href="/service/polnisch/"
+                    class="p-2 ml-1 rounded-lg hover:bg-neutral-50 transition-colors"
+                    aria-label="Polnische Version"
+                >
+                    <svg
+                        viewBox="0 0 16 10"
+                        class="h-4 w-6 rounded-sm shadow-sm border border-neutral-200"
+                    >
+                        <path fill="#fff" d="M0 0h16v5H0z"></path>
+                        <path fill="#dc143c" d="M0 5h16v5H0z"></path>
+                    </svg>
+                </a>
             </nav>
 
             <!-- Contact Button + Mobile Nav -->
             <div class="flex items-center gap-4">
+                <GlobalSearch client:load />
                 <a
                     href="/kontakt/"
                     class="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[--color-primary-900] text-white text-sm font-medium rounded-lg hover:bg-[--color-primary-800] transition-colors"

@@ -2,17 +2,20 @@
 import { footerNavigation, legalNavigation } from "../../data/navigation";
 import { locations } from "../../data/locations";
 import { images } from "../../data/images";
+import { Image } from "astro:assets";
 ---
 
-<footer style="background-color: #001a33; color: #ffffff;">
+<footer class="bg-[--color-primary-950] text-white">
     <div class="container section">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <!-- Brand -->
             <div class="lg:col-span-1">
                 <a href="/" class="inline-block mb-4">
-                    <img
+                    <Image
                         src={images.logoWhite}
                         alt="Lischka & Partner"
+                        width={200}
+                        height={60}
                         class="h-12 w-auto"
                     />
                 </a>
@@ -24,7 +27,11 @@ import { images } from "../../data/images";
 
             <!-- Quick Links -->
             <div>
-                <h3 class="text-lg font-semibold mb-4">Navigation</h3>
+                <h3
+                    class="text-lg font-semibold mb-4 text-[--color-accent-500]"
+                >
+                    Navigation
+                </h3>
                 <nav aria-label="Footer Navigation">
                     <ul class="space-y-2">
                         {
@@ -45,7 +52,11 @@ import { images } from "../../data/images";
 
             <!-- Locations -->
             <div>
-                <h3 class="text-lg font-semibold mb-4">Standorte</h3>
+                <h3
+                    class="text-lg font-semibold mb-4 text-[--color-accent-500]"
+                >
+                    Standorte
+                </h3>
                 <div class="space-y-4">
                     {
                         locations.map((location) => (
@@ -60,7 +71,7 @@ import { images } from "../../data/images";
                                 </p>
                                 <p class="mt-1">
                                     <a
-                                        href={`tel:${location.phone.replace(/\s/g, "")}`}
+                                        href={`tel:+49${location.phone.replace(/^0/, "").replace(/[\s-]/g, "")}`}
                                         class="hover:text-white transition-colors"
                                     >
                                         Tel: {location.phone}
@@ -74,7 +85,11 @@ import { images } from "../../data/images";
 
             <!-- Contact -->
             <div>
-                <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+                <h3
+                    class="text-lg font-semibold mb-4 text-[--color-accent-500]"
+                >
+                    Kontakt
+                </h3>
                 <div class="space-y-2 text-sm text-neutral-300">
                     <p>
                         <a
@@ -86,18 +101,17 @@ import { images } from "../../data/images";
                     </p>
                     <p>
                         <a
-                            href="tel:+4975136353"
+                            href="tel:+49751363530"
                             class="hover:text-white transition-colors"
                         >
-                            0751 36353-0
+                            Tel: 0751 36353-0
                         </a>
                     </p>
                 </div>
                 <div class="mt-6">
                     <a
                         href="/kontakt/"
-                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors"
-                        style="background-color: #c8b291; color: #001a33;"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-[--color-accent-500] text-[--color-primary-950]"
                     >
                         Kontaktieren Sie uns
                     </a>

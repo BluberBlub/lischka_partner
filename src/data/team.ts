@@ -10,15 +10,15 @@ export const lawyers: TeamMember[] = [
         image: images.team.christophLischka,
         admissionYear: 1983,
         specializations: [
-            { year: 1985, title: 'Fachanwaltslehrgang im Steuerrecht', type: 'lehrgang' },
-            { year: 2007, title: 'Fachanwaltslehrgang im Bau- und Architektenrecht', type: 'lehrgang' },
-            { year: 2008, title: 'Fachanwaltslehrgang im Bank- und Kapitalmarktrecht', type: 'lehrgang' },
+            { year: 1985, title: 'Fachanwalt für Steuerrecht', type: 'fachanwalt' },
+            { year: 2007, title: 'Fachanwalt für Bau- und Architektenrecht', type: 'fachanwalt' },
+            { year: 2008, title: 'Fachanwalt für Bank- und Kapitalmarktrecht', type: 'fachanwalt' },
         ],
         focusAreas: [
+            'Steuerrecht',
             'Bau- und Architektenrecht',
             'Bank- und Kapitalmarktrecht',
             'Handels- und Gesellschaftsrecht',
-            'Allgemeines Zivilrecht',
         ],
         memberships: [
             'Bank- und Kapitalmarktrecht (DAV)',

@@ -14,17 +14,48 @@ const placeholderImage = "/images/placeholder-person.svg";
 <article
     class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 group"
 >
-    <!-- Image -->
-    <div class="aspect-[4/5] overflow-hidden bg-neutral-100">
-        <img
-            src={member.image || placeholderImage}
-            alt={`${member.name} - ${member.title || member.role}`}
-            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-            width="400"
-            height="500"
-            onerror={`this.src='${placeholderImage}'`}
-        />
+    <!-- Image with skeleton loader -->
+    <div class="aspect-[4/5] overflow-hidden bg-neutral-100 relative">
+        <!-- Skeleton Loader (visible until image loads) -->
+        <div class="absolute inset-0 skeleton-loader">
+            <div
+                class="w-full h-full bg-neutral-200 animate-pulse flex items-center justify-center"
+            >
+                <svg
+                    class="w-16 h-16 text-neutral-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    ></path>
+                </svg>
+            </div>
+        </div>
+        <!-- Actual Image -->
+        {
+            member.image && member.image.startsWith("http") ? (
+                <img
+                    src={member.image}
+                    alt={`${member.name} - ${member.title || member.role}`}
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 relative z-10"
+                    loading="lazy"
+                    width="800"
+                    height="1000"
+                    onload="this.parentElement.querySelector('.skeleton-loader').style.display='none'"
+                />
+            ) : (
+                <img
+                    src={member.image || placeholderImage}
+                    alt={`${member.name} - ${member.title || member.role}`}
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 relative z-10"
+                    loading="lazy"
+                    width="400"
+                    height="500"
+                    onload="this.parentElement.querySelector('.skeleton-loader').style.display='none'"
+                />
+            )
+        }
     </div>
 
     <!-- Content -->
@@ -69,7 +100,11 @@ const placeholderImage = "/images/placeholder-person.svg";
                 member.specializations.length > 0 && (
                     <div class="mt-4">
                         {member.specializations
-                            .filter((s) => s.type === "fachanwalt")
+                            .filter(
+                                (s) =>
+                                    s.type === "fachanwalt" ||
+                                    s.type === "lehrgang",
+                            )
                             .map((spec) => (
                                 <span
                                     class="inline-block px-2 py-1 text-xs font-medium rounded mr-2 mb-2"
@@ -83,3 +118,19 @@ const placeholderImage = "/images/placeholder-person.svg";
         }
     </div>
 </article>
+
+<style>
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+</style>

@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/astro/Hero.astro";
+import Section from "../components/astro/Section.astro";
 import CTASection from "../components/astro/CTASection.astro";
-import ImageSlider from "../components/astro/ImageSlider.astro";
 import { images } from "../data/images";
 
 const seo = {
@@ -10,79 +10,285 @@ const seo = {
 	description:
 		"Rechtsanwälte | Fachanwälte Lischka & Partner Ravensburg | Bad Waldsee. Wir bieten Ihnen maßgeschneiderte Lösungen für Ihre rechtlichen Angelegenheiten und vertreten engagiert Ihre Interessen.",
 };
+
+const practiceHighlights = [
+	{
+		title: "Familienrecht",
+		description:
+			"Scheidung, Unterhalt, Sorgerecht und Vermögensauseinandersetzung",
+		icon: "users",
+		href: "/rechtsgebiete/familienrecht/",
+	},
+	{
+		title: "Erbrecht",
+		description:
+			"Testament, Pflichtteil, Erbschaftssteuer und Nachlassplanung",
+		icon: "scroll",
+		href: "/rechtsgebiete/erbrecht/",
+	},
+	{
+		title: "Verkehrsrecht",
+		description: "Unfallregulierung, Bußgeldsachen und Fahrerlaubnis",
+		icon: "car",
+		href: "/rechtsgebiete/verkehrsrecht/",
+	},
+	{
+		title: "Mietrecht",
+		description: "Mietverträge, Kündigung, Nebenkosten und WEG-Recht",
+		icon: "home",
+		href: "/rechtsgebiete/mietrecht/",
+	},
+];
+
+const stats = [
+	{ value: "40+", label: "Jahre Erfahrung" },
+	{ value: "6", label: "Fachanwälte" },
+	{ value: "2", label: "Standorte" },
+];
 ---
 
 <BaseLayout title={seo.title} description={seo.description}>
 	<!-- Hero Section -->
 	<Hero />
 
-	<!-- Content Section with Logo -->
-	<section class="py-16 md:py-24 bg-white">
-		<div class="container text-center">
-			<h2
-				class="text-2xl md:text-3xl font-serif font-bold mb-4"
-				style="color: #003466;"
-			>
-				Rechtsanwälte | Fachanwälte<br />
-				Lischka & Partner
-			</h2>
+	<!-- Trust Indicators -->
+	<Section padding="lg" background="light">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+			{
+				stats.map((stat) => (
+					<div>
+						<div
+							class="text-4xl md:text-5xl font-bold mb-2"
+							style="color: #003466;"
+						>
+							{stat.value}
+						</div>
+						<div class="text-neutral-600 font-medium">
+							{stat.label}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</Section>
 
-			<!-- Logo Image -->
-			<div class="my-8">
+	<!-- Welcome Section -->
+	<Section padding="lg">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+			<div>
+				<h2
+					class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold mb-6"
+					style="color: #003466;"
+				>
+					Rechtsanwälte & Fachanwälte<br />
+					<span style="color: #c8b291;">Lischka & Partner</span>
+				</h2>
+				<div class="space-y-4 text-neutral-600">
+					<p class="text-lg">
+						Wir bieten Ihnen maßgeschneiderte Lösungen für Ihre
+						rechtlichen Angelegenheiten und vertreten engagiert Ihre
+						Interessen.
+					</p>
+					<p>
+						Nutzen Sie unser Wissen und unsere Erfahrung. Wir helfen
+						Ihnen, die beste Lösung für Ihr Anliegen zu finden.
+					</p>
+				</div>
+
+				<!-- Keywords -->
+				<div class="flex flex-wrap gap-3 mt-8">
+					<span
+						class="px-4 py-2 rounded-full text-sm font-medium"
+						style="background-color: #e8f0f8; color: #003466;"
+					>
+						Durchsetzen
+					</span>
+					<span
+						class="px-4 py-2 rounded-full text-sm font-medium"
+						style="background-color: #e8f0f8; color: #003466;"
+					>
+						Abwehren
+					</span>
+					<span
+						class="px-4 py-2 rounded-full text-sm font-medium"
+						style="background-color: #e8f0f8; color: #003466;"
+					>
+						Verhandeln
+					</span>
+					<span
+						class="px-4 py-2 rounded-full text-sm font-medium"
+						style="background-color: #e8f0f8; color: #003466;"
+					>
+						Gestalten
+					</span>
+				</div>
+
+				<div class="mt-8">
+					<a
+						href="/team/"
+						class="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all hover:translate-y-[-2px] hover:shadow-lg"
+						style="background-color: #003466; color: #ffffff;"
+					>
+						Unser Team kennenlernen
+						<svg
+							class="w-5 h-5"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+
+			<div class="relative">
 				<img
 					src={images.logoSquare}
 					alt="Lischka & Partner Logo"
-					class="mx-auto max-w-[300px] h-auto"
+					class="w-full max-w-md mx-auto"
 					loading="lazy"
 				/>
 			</div>
+		</div>
+	</Section>
 
-			<h3
-				class="text-xl md:text-2xl font-bold mb-8"
+	<!-- Practice Areas Highlights -->
+	<Section padding="lg" background="light">
+		<div class="text-center mb-12">
+			<h2
+				class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold mb-4"
 				style="color: #003466;"
 			>
-				Ravensburg | Bad Waldsee
-			</h3>
-
-			<!-- Keywords -->
-			<div
-				class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8 text-lg"
-			>
-				<span class="flex items-center gap-2" style="color: #003466;">
-					<span style="color: #c8b291;">•</span>
-					<strong>Durchsetzen</strong>
-				</span>
-				<span class="flex items-center gap-2" style="color: #003466;">
-					<span style="color: #c8b291;">•</span>
-					<strong>Abwehren</strong>
-				</span>
-				<span class="flex items-center gap-2" style="color: #003466;">
-					<span style="color: #c8b291;">•</span>
-					<strong>Verhandeln</strong>
-				</span>
-				<span class="flex items-center gap-2" style="color: #003466;">
-					<span style="color: #c8b291;">•</span>
-					<strong>Gestalten</strong>
-				</span>
-			</div>
-
-			<hr class="w-1/2 mx-auto border-neutral-300 mb-8" />
-
-			<p class="text-lg text-neutral-700 max-w-3xl mx-auto mb-4">
-				Wir bieten Ihnen maßgeschneiderte Lösungen für Ihre rechtlichen
-				Angelegenheiten und vertreten engagiert Ihre Interessen.
-			</p>
-			<p class="text-lg text-neutral-700 max-w-3xl mx-auto mb-4">
-				Nutzen Sie unser Wissen und unsere Erfahrung. Wir helfen Ihnen,
-				die beste Lösung für Ihr Anliegen zu finden.<br />
-				Wir sind gerne für Sie da und stehen Ihnen für ein Gespräch zur Verfügung.
-			</p>
-			<p class="text-lg text-neutral-700 max-w-3xl mx-auto">
-				Kontaktieren Sie uns jetzt und lassen Sie uns gemeinsam Ihre
-				Ziele erreichen.
+				Unsere Rechtsgebiete
+			</h2>
+			<p class="text-neutral-600 max-w-2xl mx-auto">
+				Wir haben uns auf bestimmte Gebiete spezialisiert und vertreten
+				zwar nicht sämtliche Rechtsgebiete – aber alle für Sie
+				wesentlichen.
 			</p>
 		</div>
-	</section>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			{
+				practiceHighlights.map((area) => (
+					<a
+						href={area.href}
+						class="group bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:shadow-lg hover:border-[--color-primary-200] transition-all"
+					>
+						<div
+							class="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
+							style="background-color: #e8f0f8;"
+						>
+							<svg
+								class="w-6 h-6"
+								style="color: #003466;"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+								/>
+							</svg>
+						</div>
+						<h3
+							class="text-lg font-semibold mb-2 group-hover:text-[--color-primary-700]"
+							style="color: #003466;"
+						>
+							{area.title}
+						</h3>
+						<p class="text-sm text-neutral-600">
+							{area.description}
+						</p>
+					</a>
+				))
+			}
+		</div>
+
+		<div class="text-center mt-8">
+			<a
+				href="/rechtsgebiete/"
+				class="inline-flex items-center gap-2 text-[--color-primary-900] font-medium hover:underline"
+			>
+				Alle Rechtsgebiete ansehen
+				<svg
+					class="w-4 h-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+				</svg>
+			</a>
+		</div>
+	</Section>
+
+	<!-- Locations Preview -->
+	<Section padding="lg">
+		<div class="text-center mb-12">
+			<h2
+				class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold mb-4"
+				style="color: #003466;"
+			>
+				Zwei Standorte für Sie
+			</h2>
+			<p class="text-neutral-600">
+				Ravensburg und Bad Waldsee – immer in Ihrer Nähe
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+			<div
+				class="bg-white p-6 rounded-xl shadow-sm border border-neutral-100"
+			>
+				<h3 class="text-xl font-semibold mb-3" style="color: #003466;">
+					Ravensburg
+				</h3>
+				<p class="text-neutral-600 text-sm mb-4">
+					Pfannenstiel 16<br />
+					88214 Ravensburg
+				</p>
+				<p class="text-sm">
+					<span class="font-medium">Tel:</span>
+					<a
+						href="tel:+49751363530"
+						class="hover:text-[--color-primary-900]">0751 36353-0</a
+					>
+				</p>
+			</div>
+			<div
+				class="bg-white p-6 rounded-xl shadow-sm border border-neutral-100"
+			>
+				<h3 class="text-xl font-semibold mb-3" style="color: #003466;">
+					Bad Waldsee
+				</h3>
+				<p class="text-neutral-600 text-sm mb-4">
+					Hauptstraße 29<br />
+					88339 Bad Waldsee
+				</p>
+				<p class="text-sm">
+					<span class="font-medium">Tel:</span>
+					<a
+						href="tel:+497524976950"
+						class="hover:text-[--color-primary-900]"
+						>07524 97695-0</a
+					>
+				</p>
+			</div>
+		</div>
+	</Section>
 
 	<!-- CTA Section -->
 	<CTASection

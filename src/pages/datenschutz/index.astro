@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Section from "../../components/astro/Section.astro";
 import PageHeader from "../../components/astro/PageHeader.astro";
+import { images } from "../../data/images";
 
 const seo = {
     title: "Datenschutzerklärung",
@@ -11,179 +12,257 @@ const seo = {
 ---
 
 <BaseLayout title={seo.title} description={seo.description}>
+    <PageHeader
+        title="Datenschutzerklärung"
+        backgroundImage={images.pageHeaders.kanzlei}
+    />
+
     <Section padding="lg">
-        <PageHeader title="Datenschutzerklärung" />
-
-        <div class="prose prose-lg max-w-none">
-            <h2>1. Name und Kontaktdaten</h2>
-
-            <h3>a) des für die Verarbeitung Verantwortlichen:</h3>
-            <p>
-                Christoph Lischka, Rechtsanwalt<br />
-                Email: <a href="mailto:ravensburg@lischka-partner.de"
-                    >ravensburg@lischka-partner.de</a
+        <div
+            class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-neutral-100"
+        >
+            <div
+                class="prose prose-lg max-w-none text-neutral-700 prose-headings:font-serif"
+            >
+                <h2
+                    class="text-2xl font-bold text-[--color-primary-900] mt-0 mb-6"
                 >
-            </p>
+                    1. Name und Kontaktdaten
+                </h2>
 
-            <h3>b) des betrieblichen Datenschutzbeauftragten:</h3>
-            <p>
-                Tobias Betzel, Rechtsanwalt<br />
-                <a href="mailto:datenschutz@lischka-partner.de"
-                    >datenschutz@lischka-partner.de</a
-                >
-            </p>
+                <div class="pl-4 border-l-4 border-[--color-primary-100] mb-8">
+                    <h3
+                        class="text-lg font-bold text-[--color-primary-800] mb-2"
+                    >
+                        a) des für die Verarbeitung Verantwortlichen:
+                    </h3>
+                    <p class="mb-4">
+                        Christoph Lischka, Rechtsanwalt<br />
+                        Email: <a
+                            href="mailto:ravensburg@lischka-partner.de"
+                            class="text-[--color-primary-600] hover:underline font-medium"
+                            >ravensburg@lischka-partner.de</a
+                        >
+                    </p>
 
-            <h3>
-                c) Diese Datenschutz-Information gilt für die Datenverarbeitung
-                durch:
-            </h3>
-            <p>
-                Verantwortlicher: Rechtsanwälte Lischka & Partner, Pfannenstiel
-                16, 88214 Ravensburg, Deutschland<br />
-                Email: ravensburg@lischka-partner.de<br />
-                Telefon: +49 (0)751 – 363530<br />
-                Fax: +49 (0)751-3635329
-            </p>
-            <p>
-                Der betriebliche Datenschutzbeauftragte ist ebenfalls unter der
-                o.g. Anschrift erreichbar.
-            </p>
+                    <h3
+                        class="text-lg font-bold text-[--color-primary-800] mb-2"
+                    >
+                        b) des betrieblichen Datenschutzbeauftragten:
+                    </h3>
+                    <p class="mb-4">
+                        Tobias Betzel, Rechtsanwalt<br />
+                        <a
+                            href="mailto:datenschutz@lischka-partner.de"
+                            class="text-[--color-primary-600] hover:underline font-medium"
+                            >datenschutz@lischka-partner.de</a
+                        >
+                    </p>
 
-            <h2>
-                2. Erhebung und Speicherung personenbezogener Daten sowie Art
-                und Zweck von deren Verwendung
-            </h2>
+                    <h3
+                        class="text-lg font-bold text-[--color-primary-800] mb-2"
+                    >
+                        c) Diese Datenschutz-Information gilt für die
+                        Datenverarbeitung durch:
+                    </h3>
+                    <p>
+                        Verantwortlicher: Rechtsanwälte Lischka & Partner,
+                        Pfannenstiel 16, 88214 Ravensburg, Deutschland<br />
+                        Email: ravensburg@lischka-partner.de<br />
+                        Telefon: <a
+                            href="tel:+49751363530"
+                            class="text-[--color-primary-600] hover:underline font-medium"
+                            >+49 (0)751 – 363530</a
+                        ><br />
+                        Fax: <a
+                            href="tel:+497513635329"
+                            class="text-[--color-primary-600] hover:underline font-medium"
+                            >+49 (0)751-3635329</a
+                        >
+                    </p>
+                </div>
 
-            <h3>a) Beim Besuch der Website</h3>
-            <p>
-                Beim Aufrufen unserer Website www.lischka-partner.de werden
-                durch den auf Ihrem Endgerät zum Einsatz kommenden Browser
-                automatisch Informationen an den Server unserer Website
-                gesendet. Diese Informationen werden temporär in einem sog.
-                Logfile gespeichert. Folgende Informationen werden dabei ohne
-                Ihr Zutun erfasst und bis zur automatisierten Löschung
-                gespeichert:
-            </p>
-            <ul>
-                <li>IP-Adresse des anfragenden Rechners,</li>
-                <li>Datum und Uhrzeit des Zugriffs,</li>
-                <li>Name und URL der abgerufenen Datei,</li>
-                <li>
-                    Website, von der aus der Zugriff erfolgt (Referrer-URL),
-                </li>
-                <li>
-                    verwendeter Browser und ggf. das Betriebssystem Ihres
-                    Rechners sowie der Name Ihres Access-Providers.
-                </li>
-            </ul>
-            <p>
-                Die genannten Daten werden durch uns zu folgenden Zwecken
-                verarbeitet:
-            </p>
-            <ul>
-                <li>
-                    Gewährleistung eines reibungslosen Verbindungsaufbaus der
-                    Website,
-                </li>
-                <li>
-                    Gewährleistung einer komfortablen Nutzung unserer Website,
-                </li>
-                <li>Auswertung der Systemsicherheit und -stabilität sowie</li>
-                <li>zu weiteren administrativen Zwecken.</li>
-            </ul>
-            <p>
-                Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1
-                S. 1 lit. f DSGVO. Unser berechtigtes Interesse folgt aus oben
-                aufgelisteten Zwecken zur Datenerhebung. In keinem Fall
-                verwenden wir die erhobenen Daten zu dem Zweck, Rückschlüsse auf
-                Ihre Person zu ziehen.
-            </p>
+                <hr class="border-neutral-200 my-10" />
 
-            <h3>b) Bei Nutzung unseres Kontaktformulars</h3>
-            <p>
-                Bei Fragen jeglicher Art bieten wir Ihnen die Möglichkeit, mit
-                uns über ein auf der Website bereitgestelltes Formular Kontakt
-                aufzunehmen. Dabei ist die Angabe einer gültigen E-Mail-Adresse
-                erforderlich, damit wir wissen, von wem die Anfrage stammt und
-                um diese beantworten zu können. Weitere Angaben können
-                freiwillig getätigt werden.
-            </p>
-            <p>
-                Die Datenverarbeitung zum Zwecke der Kontaktaufnahme mit uns
-                erfolgt nach Art. 6 Abs. 1 S. 1 lit. a DSGVO auf Grundlage Ihrer
-                freiwillig erteilten Einwilligung.
-            </p>
+                <h2 class="text-2xl font-bold text-[--color-primary-900] mb-6">
+                    2. Erhebung und Speicherung personenbezogener Daten sowie
+                    Art und Zweck von deren Verwendung
+                </h2>
 
-            <h2>3. Weitergabe von Daten</h2>
-            <p>
-                Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen
-                als den im Folgenden aufgeführten Zwecken findet nicht statt.
-            </p>
-            <p>Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:</p>
-            <ul>
-                <li>
-                    Sie Ihre nach Art. 6 Abs. 1 S. 1 lit. a DSGVO ausdrückliche
-                    Einwilligung dazu erteilt haben,
-                </li>
-                <li>
-                    die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. f DSGVO zur
-                    Geltendmachung, Ausübung oder Verteidigung von
-                    Rechtsansprüchen erforderlich ist,
-                </li>
-                <li>
-                    für den Fall, dass für die Weitergabe nach Art. 6 Abs. 1 S.
-                    1 lit. c DSGVO eine gesetzliche Verpflichtung besteht,
-                </li>
-                <li>
-                    dies gesetzlich zulässig und nach Art. 6 Abs. 1 S. 1 lit. b
-                    DSGVO für die Abwicklung von Vertragsverhältnissen mit Ihnen
-                    erforderlich ist.
-                </li>
-            </ul>
+                <div class="mb-8">
+                    <h3
+                        class="text-xl font-bold text-[--color-primary-800] mb-3"
+                    >
+                        a) Beim Besuch der Website
+                    </h3>
+                    <p class="mb-4">
+                        Beim Aufrufen unserer Website www.lischka-partner.de
+                        werden durch den auf Ihrem Endgerät zum Einsatz
+                        kommenden Browser automatisch Informationen an den
+                        Server unserer Website gesendet. Diese Informationen
+                        werden temporär in einem sog. Logfile gespeichert.
+                        Folgende Informationen werden dabei ohne Ihr Zutun
+                        erfasst und bis zur automatisierten Löschung
+                        gespeichert:
+                    </p>
+                    <ul
+                        class="list-disc pl-5 space-y-2 mb-4 bg-neutral-50 p-6 rounded-lg border border-neutral-100"
+                    >
+                        <li>IP-Adresse des anfragenden Rechners,</li>
+                        <li>Datum und Uhrzeit des Zugriffs,</li>
+                        <li>Name und URL der abgerufenen Datei,</li>
+                        <li>
+                            Website, von der aus der Zugriff erfolgt
+                            (Referrer-URL),
+                        </li>
+                        <li>
+                            verwendeter Browser und ggf. das Betriebssystem
+                            Ihres Rechners sowie der Name Ihres
+                            Access-Providers.
+                        </li>
+                    </ul>
+                    <p class="mb-4">
+                        Die genannten Daten werden durch uns zu folgenden
+                        Zwecken verarbeitet:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li>
+                            Gewährleistung eines reibungslosen
+                            Verbindungsaufbaus der Website,
+                        </li>
+                        <li>
+                            Gewährleistung einer komfortablen Nutzung unserer
+                            Website,
+                        </li>
+                        <li>
+                            Auswertung der Systemsicherheit und -stabilität
+                            sowie
+                        </li>
+                        <li>zu weiteren administrativen Zwecken.</li>
+                    </ul>
+                    <p>
+                        Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6
+                        Abs. 1 S. 1 lit. f DSGVO. Unser berechtigtes Interesse
+                        folgt aus oben aufgelisteten Zwecken zur Datenerhebung.
+                        In keinem Fall verwenden wir die erhobenen Daten zu dem
+                        Zweck, Rückschlüsse auf Ihre Person zu ziehen.
+                    </p>
+                </div>
 
-            <h2>4. Cookies</h2>
-            <p>
-                Wir setzen auf unserer Seite Cookies ein. Hierbei handelt es
-                sich um kleine Dateien, die Ihr Browser automatisch erstellt und
-                die auf Ihrem Endgerät gespeichert werden, wenn Sie unsere Seite
-                besuchen. Cookies richten auf Ihrem Endgerät keinen Schaden an,
-                enthalten keine Viren, Trojaner oder sonstige Schadsoftware.
-            </p>
+                <div class="mb-8">
+                    <h3
+                        class="text-xl font-bold text-[--color-primary-800] mb-3"
+                    >
+                        b) Bei Nutzung unseres Kontaktformulars
+                    </h3>
+                    <p>
+                        Bei Fragen jeglicher Art bieten wir Ihnen die
+                        Möglichkeit, mit uns über ein auf der Website
+                        bereitgestelltes Formular Kontakt aufzunehmen. Dabei ist
+                        die Angabe einer gültigen E-Mail-Adresse erforderlich,
+                        damit wir wissen, von wem die Anfrage stammt und um
+                        diese beantworten zu können. Weitere Angaben können
+                        freiwillig getätigt werden.
+                    </p>
+                    <p>
+                        Die Datenverarbeitung zum Zwecke der Kontaktaufnahme mit
+                        uns erfolgt nach Art. 6 Abs. 1 S. 1 lit. a DSGVO auf
+                        Grundlage Ihrer freiwillig erteilten Einwilligung.
+                    </p>
+                </div>
 
-            <h2>5. Betroffenenrechte</h2>
-            <p>Sie haben das Recht:</p>
-            <ul>
-                <li>
-                    gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten
-                    personenbezogenen Daten zu verlangen;
-                </li>
-                <li>
-                    gemäß Art. 16 DSGVO unverzüglich die Berichtigung
-                    unrichtiger oder Vervollständigung Ihrer bei uns
-                    gespeicherten personenbezogenen Daten zu verlangen;
-                </li>
-                <li>
-                    gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten
-                    personenbezogenen Daten zu verlangen;
-                </li>
-                <li>
-                    gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung Ihrer
-                    personenbezogenen Daten zu verlangen;
-                </li>
-                <li>
-                    gemäß Art. 20 DSGVO Ihre personenbezogenen Daten in einem
-                    strukturierten, gängigen und maschinenlesbaren Format zu
-                    erhalten;
-                </li>
-                <li>
-                    gemäß Art. 7 Abs. 3 DSGVO Ihre einmal erteilte Einwilligung
-                    jederzeit gegenüber uns zu widerrufen;
-                </li>
-                <li>
-                    gemäß Art. 77 DSGVO sich bei einer Aufsichtsbehörde zu
-                    beschweren.
-                </li>
-            </ul>
+                <hr class="border-neutral-200 my-10" />
+
+                <h2 class="text-2xl font-bold text-[--color-primary-900] mb-6">
+                    3. Weitergabe von Daten
+                </h2>
+                <div class="mb-8">
+                    <p class="mb-4">
+                        Eine Übermittlung Ihrer persönlichen Daten an Dritte zu
+                        anderen als den im Folgenden aufgeführten Zwecken findet
+                        nicht statt.
+                    </p>
+                    <p class="mb-4">
+                        Wir geben Ihre persönlichen Daten nur an Dritte weiter,
+                        wenn:
+                    </p>
+                    <ul
+                        class="list-disc pl-5 space-y-2 bg-neutral-50 p-6 rounded-lg border border-neutral-100"
+                    >
+                        <li>
+                            Sie Ihre nach Art. 6 Abs. 1 S. 1 lit. a DSGVO
+                            ausdrückliche Einwilligung dazu erteilt haben,
+                        </li>
+                        <li>
+                            die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. f DSGVO
+                            zur Geltendmachung, Ausübung oder Verteidigung von
+                            Rechtsansprüchen erforderlich ist,
+                        </li>
+                        <li>
+                            für den Fall, dass für die Weitergabe nach Art. 6
+                            Abs. 1 S. 1 lit. c DSGVO eine gesetzliche
+                            Verpflichtung besteht,
+                        </li>
+                        <li>
+                            dies gesetzlich zulässig und nach Art. 6 Abs. 1 S. 1
+                            lit. b DSGVO für die Abwicklung von
+                            Vertragsverhältnissen mit Ihnen erforderlich ist.
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold text-[--color-primary-900] mb-6">
+                    4. Cookies
+                </h2>
+                <p class="mb-8">
+                    Wir setzen auf unserer Seite Cookies ein. Hierbei handelt es
+                    sich um kleine Dateien, die Ihr Browser automatisch erstellt
+                    und die auf Ihrem Endgerät gespeichert werden, wenn Sie
+                    unsere Seite besuchen. Cookies richten auf Ihrem Endgerät
+                    keinen Schaden an, enthalten keine Viren, Trojaner oder
+                    sonstige Schadsoftware.
+                </p>
+
+                <h2 class="text-2xl font-bold text-[--color-primary-900] mb-6">
+                    5. Betroffenenrechte
+                </h2>
+                <div class="mb-8">
+                    <p class="mb-4">Sie haben das Recht:</p>
+                    <ul class="list-disc pl-5 space-y-3">
+                        <li>
+                            gemäß Art. 15 DSGVO Auskunft über Ihre von uns
+                            verarbeiteten personenbezogenen Daten zu verlangen;
+                        </li>
+                        <li>
+                            gemäß Art. 16 DSGVO unverzüglich die Berichtigung
+                            unrichtiger oder Vervollständigung Ihrer bei uns
+                            gespeicherten personenbezogenen Daten zu verlangen;
+                        </li>
+                        <li>
+                            gemäß Art. 17 DSGVO die Löschung Ihrer bei uns
+                            gespeicherten personenbezogenen Daten zu verlangen;
+                        </li>
+                        <li>
+                            gemäß Art. 18 DSGVO die Einschränkung der
+                            Verarbeitung Ihrer personenbezogenen Daten zu
+                            verlangen;
+                        </li>
+                        <li>
+                            gemäß Art. 20 DSGVO Ihre personenbezogenen Daten in
+                            einem strukturierten, gängigen und maschinenlesbaren
+                            Format zu erhalten;
+                        </li>
+                        <li>
+                            gemäß Art. 7 Abs. 3 DSGVO Ihre einmal erteilte
+                            Einwilligung jederzeit gegenüber uns zu widerrufen;
+                        </li>
+                        <li>
+                            gemäß Art. 77 DSGVO sich bei einer Aufsichtsbehörde
+                            zu beschweren.
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </Section>
 </BaseLayout>
