@@ -16,7 +16,37 @@ const {
 } = Astro.props;
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+
+const breadcrumbSchema = breadcrumbs
+    ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+              {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.lischka-partner.de/",
+              },
+              ...breadcrumbs.map((crumb, index) => ({
+                  "@type": "ListItem",
+                  position: index + 2,
+                  name: crumb.label,
+                  item: `https://www.lischka-partner.de${crumb.href}`,
+              })),
+          ],
+      }
+    : null;
 ---
+
+{
+    breadcrumbSchema && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(breadcrumbSchema)}
+        />
+    )
+}
 
 {
     backgroundImage ? (

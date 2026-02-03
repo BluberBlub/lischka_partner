@@ -25,13 +25,32 @@ const otherAreas = practiceAreas
     .filter((a) => a.id !== area.id)
     .sort(() => 0.5 - Math.random())
     .slice(0, 3);
+
+const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    name: area.name,
+    description: area.description,
+    provider: {
+        "@type": "LegalService",
+        name: "Lischka & Partner Rechtsanwälte",
+        url: "https://www.lischka-partner.de",
+    },
+    url: `https://www.lischka-partner.de/rechtsgebiete/${area.slug}/`,
+    serviceType: area.name,
+    areaServed: ["Ravensburg", "Bad Waldsee", "Bodensee", "Oberschwaben"],
+};
 ---
 
 <BaseLayout
     title={`${area.name} - Lischka & Partner`}
     description={area.description ||
         `Rechtliche Beratung im Bereich ${area.name}`}
+    description={area.description ||
+        `Rechtliche Beratung im Bereich ${area.name}`}
 >
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
     <!-- Page Header -->
     <PageHeader
         title={area.name}
