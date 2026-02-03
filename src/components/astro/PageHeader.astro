@@ -4,9 +4,16 @@ interface Props {
     subtitle?: string;
     centered?: boolean;
     backgroundImage?: string | ImageMetadata;
+    breadcrumbs?: { label: string; href: string }[];
 }
 
-const { title, subtitle, centered = false, backgroundImage } = Astro.props;
+const {
+    title,
+    subtitle,
+    centered = false,
+    backgroundImage,
+    breadcrumbs,
+} = Astro.props;
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 ---
@@ -15,7 +22,7 @@ import type { ImageMetadata } from "astro";
     backgroundImage ? (
         <div class="relative w-full h-[300px] md:h-[400px] overflow-hidden mb-12">
             <Image
-                src={backgroundImage}
+                src={backgroundImage as any}
                 alt={title}
                 width={1920}
                 height={1080}
@@ -24,6 +31,33 @@ import type { ImageMetadata } from "astro";
             />
             <div class="absolute inset-0 bg-black/50" />
             <div class="absolute inset-0 flex flex-col items-center justify-end pb-8 md:pb-12 text-center container mx-auto px-4">
+                {breadcrumbs && (
+                    <nav class="relative z-10 mb-4 text-sm text-white/80">
+                        <ul class="flex items-center justify-center gap-2">
+                            <li>
+                                <a
+                                    href="/"
+                                    class="hover:text-white transition-colors"
+                                >
+                                    Home
+                                </a>
+                            </li>
+                            {breadcrumbs.map((crumb) => (
+                                <>
+                                    <li class="select-none">/</li>
+                                    <li>
+                                        <a
+                                            href={crumb.href}
+                                            class="hover:text-white transition-colors text-white font-medium"
+                                        >
+                                            {crumb.label}
+                                        </a>
+                                    </li>
+                                </>
+                            ))}
+                        </ul>
+                    </nav>
+                )}
                 <h1
                     class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 relative z-10"
                     style="color: #ffffff;"

@@ -1,0 +1,15 @@
+---
+import PracticeAreaLayout from "../../layouts/PracticeAreaLayout.astro";
+import { practiceAreas } from "../../data/practice-areas";
+
+export function getStaticPaths() {
+    return practiceAreas.map((area) => ({
+        params: { slug: area.slug },
+        props: { area },
+    }));
+}
+
+const { area } = Astro.props;
+---
+
+<PracticeAreaLayout area={area} />

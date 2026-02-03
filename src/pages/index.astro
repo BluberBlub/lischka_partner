@@ -4,6 +4,8 @@ import Hero from "../components/astro/Hero.astro";
 import Section from "../components/astro/Section.astro";
 import CTASection from "../components/astro/CTASection.astro";
 import { images } from "../data/images";
+import { practiceAreas } from "../data/practice-areas";
+import { createLucideIcon } from "../components/react/createLucideIcon";
 import { Image } from "astro:assets";
 
 const seo = {
@@ -12,34 +14,22 @@ const seo = {
 		"Rechtsanwälte | Fachanwälte Lischka & Partner Ravensburg | Bad Waldsee. Wir bieten Ihnen maßgeschneiderte Lösungen für Ihre rechtlichen Angelegenheiten und vertreten engagiert Ihre Interessen.",
 };
 
-const practiceHighlights = [
-	{
-		title: "Familienrecht",
-		description:
-			"Scheidung, Unterhalt, Sorgerecht und Vermögensauseinandersetzung",
-		icon: "users",
-		href: "/rechtsgebiete/familienrecht/",
-	},
-	{
-		title: "Erbrecht",
-		description:
-			"Testament, Pflichtteil, Erbschaftssteuer und Nachlassplanung",
-		icon: "scroll",
-		href: "/rechtsgebiete/erbrecht/",
-	},
-	{
-		title: "Verkehrsrecht",
-		description: "Unfallregulierung, Bußgeldsachen und Fahrerlaubnis",
-		icon: "car",
-		href: "/rechtsgebiete/verkehrsrecht/",
-	},
-	{
-		title: "Mietrecht",
-		description: "Mietverträge, Kündigung, Nebenkosten und WEG-Recht",
-		icon: "home",
-		href: "/rechtsgebiete/mietrecht/",
-	},
+const highlightedIds = [
+	"familienrecht",
+	"erbrecht",
+	"verkehrsrecht",
+	"mietrecht",
 ];
+const practiceHighlights = highlightedIds
+	.map((id) => {
+		const area = practiceAreas.find((a) => a.id === id);
+		if (!area) return null;
+		return {
+			...area,
+			Icon: area.icon ? createLucideIcon(area.icon) : null,
+		};
+	})
+	.filter((item): item is NonNullable<typeof item> => item !== null);
 
 const stats = [
 	{ value: "40+", label: "Jahre Erfahrung" },
@@ -168,45 +158,68 @@ const stats = [
 				Unsere Rechtsgebiete
 			</h2>
 			<p class="text-neutral-600 max-w-2xl mx-auto">
-				Wir haben uns auf bestimmte Gebiete spezialisiert und vertreten
-				zwar nicht sämtliche Rechtsgebiete – aber alle für Sie
-				wesentlichen.
+				Qualität durch Fokus: Wir haben uns bewusst spezialisiert, um
+				Ihnen in den für Sie wichtigen Rechtsgebieten stets die
+				bestmögliche Beratung zu bieten.
 			</p>
 		</div>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 			{
 				practiceHighlights.map((area) => (
-					<div class="group bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:shadow-lg hover:border-[--color-primary-200] transition-all">
+					<a
+						href={`/rechtsgebiete/${area.slug}/`}
+						class="group bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:shadow-lg hover:border-[--color-primary-200] transition-all block"
+					>
 						<div
 							class="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
 							style="background-color: #e8f0f8;"
 						>
-							<svg
-								class="w-6 h-6"
-								style="color: #003466;"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-								/>
-							</svg>
+							{area.Icon ? (
+								<area.Icon className="w-6 h-6 text-[#003466]" />
+							) : (
+								<svg
+									class="w-6 h-6"
+									style="color: #003466;"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+									/>
+								</svg>
+							)}
 						</div>
 						<h3
 							class="text-lg font-semibold mb-2 group-hover:text-[--color-primary-700]"
 							style="color: #003466;"
 						>
-							{area.title}
+							{area.name}
 						</h3>
-						<p class="text-sm text-neutral-600">
+						<p class="text-sm text-neutral-600 line-clamp-2 mb-4">
 							{area.description}
 						</p>
-					</div>
+						<span class="inline-flex items-center text-sm font-semibold text-[--color-primary-600] group-hover:underline">
+							Mehr erfahren
+							<svg
+								class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 5l7 7-7 7"
+								/>
+							</svg>
+						</span>
+					</a>
 				))
 			}
 		</div>

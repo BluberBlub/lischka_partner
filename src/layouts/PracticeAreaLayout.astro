@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/astro/Section.astro";
+import PageHeader from "../components/astro/PageHeader.astro";
+import CTASection from "../components/astro/CTASection.astro";
+import { images } from "../data/images";
+import { practiceAreas } from "../data/practice-areas";
+import type { PracticeArea } from "../types";
+import { createLucideIcon } from "../components/react/createLucideIcon";
+
+interface Props {
+    area: PracticeArea;
+}
+
+const { area } = Astro.props;
+
+// Default images if not specified (could be extended later)
+const headerImage = images.pageHeaders.rechtsgebiete;
+
+// Dynamic Icon
+const Icon = area.icon ? createLucideIcon(area.icon) : null;
+
+// Other Practice Areas (Random 3)
+const otherAreas = practiceAreas
+    .filter((a) => a.id !== area.id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
+---
+
+<BaseLayout
+    title={`${area.name} - Lischka & Partner`}
+    description={area.description ||
+        `Rechtliche Beratung im Bereich ${area.name}`}
+>
+    <!-- Page Header -->
+    <PageHeader
+        title={area.name}
+        subtitle={area.description}
+        backgroundImage={headerImage}
+        breadcrumbs={[
+            { label: "Rechtsgebiete", href: "/rechtsgebiete/" },
+            { label: area.name, href: `/rechtsgebiete/${area.slug}/` },
+        ]}
+    />
+
+    <!-- Problem / Intro Section -->
+    <Section padding="lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div class="prose prose-lg text-neutral-600">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-6">
+                    {area.problemTitle || "Warum wir der richtige Partner sind"}
+                </h2>
+                <div class="text-lg leading-relaxed">
+                    {
+                        area.intro ? (
+                            <p>{area.intro}</p>
+                        ) : (
+                            <p>
+                                Im Bereich {area.name} stehen wir Ihnen mit
+                                langjähriger Erfahrung und höchster Kompetenz
+                                zur Seite. Wir verstehen, dass rechtliche Fragen
+                                oft belastend sein können und bieten Ihnen klare
+                                Orientierung.
+                            </p>
+                        )
+                    }
+                    {
+                        area.problemDescription && (
+                            <p class="mt-4">{area.problemDescription}</p>
+                        )
+                    }
+                </div>
+            </div>
+
+            <!-- Quick Facts / Service List Card -->
+            <div
+                class="bg-primary-50 p-8 rounded-2xl border border-primary-100"
+            >
+                <h3
+                    class="text-xl font-bold text-primary mb-6 flex items-center gap-3"
+                >
+                    {Icon && <Icon className="w-6 h-6" />}
+                    {area.servicesTitle || "Unsere Leistungen"}
+                </h3>
+
+                {
+                    area.services && area.services.length > 0 ? (
+                        <ul class="space-y-3">
+                            {area.services.map((service) => (
+                                <li class="flex items-start gap-3">
+                                    <svg
+                                        class="w-5 h-5 text-accent mt-0.5 flex-shrink-0"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                    <span class="text-neutral-700 font-medium">
+                                        {service}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p class="text-neutral-600 italic">
+                            Detaillierte Leistungsübersicht folgt.
+                        </p>
+                    )
+                }
+            </div>
+        </div>
+    </Section>
+
+    <!-- FAQ Section (if available) -->
+    {
+        area.faq && area.faq.length > 0 && (
+            <Section background="light" padding="lg">
+                <h2 class="text-3xl font-serif font-bold text-center text-primary mb-12">
+                    Häufige Fragen zum {area.name}
+                </h2>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    {area.faq.map((item) => (
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-neutral-100">
+                            <h3 class="text-lg font-bold text-primary mb-3">
+                                {item.question}
+                            </h3>
+                            <p class="text-neutral-600">{item.answer}</p>
+                        </div>
+                    ))}
+                </div>
+            </Section>
+        )
+    }
+
+    {
+        otherAreas.length > 0 && (
+            <Section padding="lg">
+                <h2 class="text-2xl font-serif font-bold text-primary mb-8 border-t border-neutral-200 pt-12">
+                    Weitere Rechtsgebiete
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {otherAreas.map((other) => (
+                        <a
+                            href={`/rechtsgebiete/${other.slug}/`}
+                            class="group block p-6 bg-white rounded-xl border border-neutral-100 shadow-sm hover:shadow-md transition-all"
+                        >
+                            <h3 class="text-lg font-bold text-primary group-hover:text-accent transition-colors mb-2">
+                                {other.name}
+                            </h3>
+                            <p class="text-sm text-neutral-600 line-clamp-2 mb-4">
+                                {other.description}
+                            </p>
+                            <span class="inline-flex items-center text-sm font-semibold text-primary group-hover:underline">
+                                Mehr erfahren
+                                <svg
+                                    class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 5l7 7-7 7"
+                                    />
+                                </svg>
+                            </span>
+                        </a>
+                    ))}
+                </div>
+            </Section>
+        )
+    }
+
+    <!-- CTA -->
+    <CTASection
+        title={`Benötigen Sie Hilfe im ${area.name}?`}
+        subtitle="Vereinbaren Sie jetzt einen Beratungstermin."
+    />
+</BaseLayout>

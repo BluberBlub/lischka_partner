@@ -24,6 +24,14 @@ export interface PracticeArea {
     name: string;
     slug: string;
     description?: string;
+    // Rich Content Fields
+    intro?: string;
+    icon?: string; // Lucide icon name
+    problemTitle?: string;
+    problemDescription?: string;
+    servicesTitle?: string;
+    services?: string[];
+    faq?: { question: string; answer: string }[];
 }
 
 // Location Types
