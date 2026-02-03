@@ -1,10 +1,11 @@
-// Team Member Types
+import type { ImageMetadata } from "astro";
+
 export interface TeamMember {
     id: string;
     name: string;
     role: 'lawyer' | 'assistant';
     title?: string;
-    image?: string;
+    image?: string | ImageMetadata;
     admissionYear?: number;
     specializations?: Specialization[];
     focusAreas?: string[];

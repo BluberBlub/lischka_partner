@@ -1,66 +1,82 @@
-/**
- * Centralized image management
- * All images are referenced from the existing website
- */
+import logo from '../assets/images/logo.png';
+import logoWhite from '../assets/images/logo-white.png';
+import logoSquare from '../assets/images/logo-square.png';
 
-const BASE_URL = 'https://www.lischka-partner.de/wp-content/uploads';
+// Headers / Sliders
+import headerHome from '../assets/images/header-home.jpg';
+import headerKanzlei from '../assets/images/header-kanzlei.jpg'; // Used for multiple pages
+
+// Team
+import teamLischka from '../assets/images/team-lischka.jpg';
+import teamHornstein from '../assets/images/team-hornstein.jpg';
+import teamBetzel from '../assets/images/team-betzel.jpg';
+import teamColas from '../assets/images/team-colas.jpg';
+import teamDragoescu from '../assets/images/team-dragoescu.jpg';
+import teamPult from '../assets/images/team-pult.jpg';
+
+// Assistants
+import assistantHaerdtner from '../assets/images/assistant-haerdtner.jpg';
+import assistantPrinz from '../assets/images/assistant-prinz.jpg';
+import assistantSteinke from '../assets/images/assistant-steinke.jpg';
+import assistantAlbina from '../assets/images/assistant-albina.png';
+import assistantArmina from '../assets/images/assistant-armina.png';
 
 export const images = {
     // Logo
-    logo: `${BASE_URL}/2023/04/Logo_Long.png`,
-    logoWhite: `${BASE_URL}/2023/04/Logo_weiss.png`,
-    logoSquare: `${BASE_URL}/2023/04/Logo.png`,
+    logo,
+    logoWhite,
+    logoSquare,
 
     // Slider Images (Homepage)
     slider: {
-        image1: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
-        image2: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
+        image1: headerHome,
+        image2: headerKanzlei,
     },
 
     // Page Header Images
     pageHeaders: {
-        home: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
-        kanzlei: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
-        team: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
-        karriere: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
-        rechtsgebiete: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
-        kontakt: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
-        polnisch: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
+        home: headerHome,
+        kanzlei: headerKanzlei,
+        team: headerKanzlei,
+        karriere: headerHome,
+        rechtsgebiete: headerKanzlei,
+        kontakt: headerHome,
+        polnisch: headerKanzlei,
     },
 
-    // Team Photos - Lawyers (full resolution)
+    // Team Photos - Lawyers
     team: {
-        christophLischka: `${BASE_URL}/2023/11/Lischka.jpg`,
-        helmutHornstein: `${BASE_URL}/2023/04/Lischka-1198.jpg`,
-        tobiasBetzel: `${BASE_URL}/2023/04/Lischka-1152.jpg`,
-        matthieuColas: `${BASE_URL}/2026/01/IMG_8165b-1.jpg`,
-        oliverDragoescu: `${BASE_URL}/2026/01/IMG_8262b-1.jpg`,
-        danielJakobPult: `${BASE_URL}/2026/01/IMG_8244b-1.jpg`,
+        christophLischka: teamLischka,
+        helmutHornstein: teamHornstein,
+        tobiasBetzel: teamBetzel,
+        matthieuColas: teamColas,
+        oliverDragoescu: teamDragoescu,
+        danielJakobPult: teamPult,
     },
 
-    // Team Photos - Assistants (full resolution)
+    // Team Photos - Assistants
     assistants: {
-        martinaHaerdtner: `${BASE_URL}/2023/04/Lischka-582-1.jpg`,
-        claudiaPrinz: `${BASE_URL}/2023/04/Lischka-374.jpg`,
-        kathrinSteinke: `${BASE_URL}/2023/04/Lischka-306.jpg`,
-        albinaAdra: `${BASE_URL}/2026/01/Gemini_Generated_Image_zb2tdizb2tdizb2t.png`,
-        arminaAdra: `${BASE_URL}/2026/01/Gemini_Generated_Image_f3oulkf3oulkf3ou.png`,
+        martinaHaerdtner: assistantHaerdtner,
+        claudiaPrinz: assistantPrinz,
+        kathrinSteinke: assistantSteinke,
+        albinaAdra: assistantAlbina,
+        arminaAdra: assistantArmina,
     },
 
-    // Office Photos
+    // Office Photos (reusing headers for now or placeholders if missing downloads)
     office: {
-        ravensburg: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
-        badWaldsee: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
-        interior: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
+        ravensburg: headerHome,
+        badWaldsee: headerKanzlei,
+        interior: headerKanzlei,
     },
 
     // Hero/Background Images
     hero: {
-        main: `${BASE_URL}/2024/12/Lischka-1573-4-scaled.jpg`,
-        contact: `${BASE_URL}/2023/11/Lischka-1433-scaled.jpg`,
+        main: headerHome,
+        contact: headerKanzlei,
     },
 
-    // Placeholder for missing images
+    // Placeholder
     placeholder: {
         person: '/images/placeholder-person.svg',
         office: '/images/placeholder-office.svg',
@@ -68,4 +84,3 @@ export const images = {
 } as const;
 
 export type ImageKey = keyof typeof images;
-

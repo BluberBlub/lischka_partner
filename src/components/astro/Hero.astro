@@ -1,5 +1,6 @@
 ---
 import { images } from "../../data/images";
+import type { ImageMetadata } from "astro";
 
 interface Props {
     subtitle?: string;
@@ -7,7 +8,7 @@ interface Props {
     description?: string;
     ctaText?: string;
     ctaHref?: string;
-    backgroundImage?: string;
+    backgroundImage?: string | ImageMetadata;
 }
 
 const {

@@ -33,9 +33,8 @@ export default function PracticeAreaSearch({ areas }: Props) {
             {filteredAreas.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {filteredAreas.map((area) => (
-                        <a
+                        <div
                             key={area.id}
-                            href={`/rechtsgebiete/${area.slug}`}
                             className="group flex flex-col p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-neutral-100 h-full"
                         >
                             <div className="mb-4">
@@ -48,10 +47,7 @@ export default function PracticeAreaSearch({ areas }: Props) {
                             <h3 className="text-lg font-bold text-neutral-900 group-hover:text-[--color-primary-700] transition-colors mb-2">
                                 {area.name}
                             </h3>
-                            <p className="text-sm text-neutral-500 mt-auto">
-                                Mehr erfahren →
-                            </p>
-                        </a>
+                        </div>
                     ))}
                 </div>
             ) : (

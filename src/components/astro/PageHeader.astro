@@ -3,11 +3,12 @@ interface Props {
     title: string;
     subtitle?: string;
     centered?: boolean;
-    backgroundImage?: string;
+    backgroundImage?: string | ImageMetadata;
 }
 
 const { title, subtitle, centered = false, backgroundImage } = Astro.props;
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 ---
 
 {

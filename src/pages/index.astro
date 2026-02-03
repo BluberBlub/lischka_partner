@@ -4,6 +4,7 @@ import Hero from "../components/astro/Hero.astro";
 import Section from "../components/astro/Section.astro";
 import CTASection from "../components/astro/CTASection.astro";
 import { images } from "../data/images";
+import { Image } from "astro:assets";
 
 const seo = {
 	title: "Home",
@@ -147,11 +148,11 @@ const stats = [
 			</div>
 
 			<div class="relative">
-				<img
+				<Image
 					src={images.logoSquare}
 					alt="Lischka & Partner Logo"
 					class="w-full max-w-md mx-auto"
-					loading="lazy"
+					loading="eager"
 				/>
 			</div>
 		</div>
@@ -176,10 +177,7 @@ const stats = [
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 			{
 				practiceHighlights.map((area) => (
-					<a
-						href={area.href}
-						class="group bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:shadow-lg hover:border-[--color-primary-200] transition-all"
-					>
+					<div class="group bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:shadow-lg hover:border-[--color-primary-200] transition-all">
 						<div
 							class="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
 							style="background-color: #e8f0f8;"
@@ -208,30 +206,9 @@ const stats = [
 						<p class="text-sm text-neutral-600">
 							{area.description}
 						</p>
-					</a>
+					</div>
 				))
 			}
-		</div>
-
-		<div class="text-center mt-8">
-			<a
-				href="/rechtsgebiete/"
-				class="inline-flex items-center gap-2 text-[--color-primary-900] font-medium hover:underline"
-			>
-				Alle Rechtsgebiete ansehen
-				<svg
-					class="w-4 h-4"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-				</svg>
-			</a>
 		</div>
 	</Section>
 
