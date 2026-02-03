@@ -20,6 +20,58 @@ const {
 
 const siteName = "Anwaltskanzlei Lischka & Partner";
 const fullTitle = title === "Home" ? siteName : `${title} - ${siteName}`;
+
+// JSON-LD Structured Data for LocalBusiness
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "@id": "https://www.lischka-partner.de",
+  name: siteName,
+  alternateName: "Lischka & Partner Rechtsanwälte",
+  description:
+    "Rechtsanwälte und Fachanwälte in Ravensburg und Bad Waldsee. Spezialisiert auf Familienrecht, Erbrecht, Verkehrsrecht und Mietrecht.",
+  url: "https://www.lischka-partner.de",
+  telephone: "+49-751-36353-0",
+  email: "info@lischka-partner.de",
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Pfannenstiel 16",
+      addressLocality: "Ravensburg",
+      postalCode: "88214",
+      addressCountry: "DE",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Hauptstraße 29",
+      addressLocality: "Bad Waldsee",
+      postalCode: "88339",
+      addressCountry: "DE",
+    },
+  ],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "47.7815",
+    longitude: "9.6115",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+  ],
+  priceRange: "$$",
+  areaServed: ["Ravensburg", "Bad Waldsee", "Bodensee", "Oberschwaben"],
+  serviceType: [
+    "Familienrecht",
+    "Erbrecht",
+    "Verkehrsrecht",
+    "Mietrecht",
+    "Arbeitsrecht",
+  ],
+};
 ---
 
 <!doctype html>
@@ -28,7 +80,17 @@ const fullTitle = title === "Home" ? siteName : `${title} - ${siteName}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Anwaltskanzlei Lischka & Partner" />
+    <meta name="theme-color" content="#003466" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="geo.region" content="DE-BW" />
+    <meta name="geo.placename" content="Ravensburg" />
 
     <!-- Canonical -->
     <link rel="canonical" href={canonical} />
@@ -50,14 +112,26 @@ const fullTitle = title === "Home" ? siteName : `${title} - ${siteName}`;
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Fonts -->
+    <!-- DNS Prefetch & Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font Loading with Display Swap -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
     />
 
     <title>{fullTitle}</title>

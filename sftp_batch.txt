@@ -1,0 +1,4 @@
+cd /lischka
+lcd dist
+put -r *
+bye
